@@ -8,7 +8,7 @@
     "coder": "node coder/index.js",
     "dev": "npm run coder & node build/dev-server.js",
     "start": "npm run dev",
-    "build": "npm_config_preview=true npm_config_report=true node build/build.js --max_old_space_size=2048 ",
+    "build": "npm run coder & npm_config_preview=true npm_config_report=true node build/build.js --max_old_space_size=2048 ",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit/specs"

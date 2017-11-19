@@ -63,7 +63,9 @@ module.exports = {
   successCodeValue: 0,
 
   // Mock新增接口响应mock信息
-  addMockData: true,
+  addMockData: {
+    id: '@guid'
+  },
 
   // Mock更新接口响应mock信息
   updateMockData: true,
