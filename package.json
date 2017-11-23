@@ -11,7 +11,8 @@
     "build": "npm run coder & npm_config_preview=true npm_config_report=true node build/build.js --max_old_space_size=2048 ",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "test": "npm run unit",
-    "lint": "eslint --ext .js,.vue src test/unit/specs"
+    "lint": "eslint --ext .js,.vue src test/unit/specs",
+    "install": "svn export https://ip:port/path/node_modules node_modules —username chenhuachun —password chenhuachun"
   },
   "dependencies": {
     "animate.css": "^3.5.2",

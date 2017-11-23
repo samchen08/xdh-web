@@ -5,7 +5,7 @@ export default {
     {
       path: '/',
       name: 'Hello',
-      component: _import('HelloWorld')
+      component: _import('hello-world')
     }
   ]
 }
