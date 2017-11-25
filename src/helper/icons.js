@@ -1,4 +1,4 @@
-/*! build time: 2017-11-25 10:45:26 */
+/*! build time: 2017-11-25 11:05:20 */
 function fixIconfont(array) {
   return array.map(item => {
     return 'iconfont icon-' + item

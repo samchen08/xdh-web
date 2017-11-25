@@ -1,1 +1,64 @@
-$header-bg-color: #eee
+
+//------------ 字体
+$font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+
+//-------------字体大小
+//主标题
+$size-xl: 20px;
+
+// 标题
+$size-l: 18px;
+
+// 小标题
+$size-m: 16px;
+
+// 正文
+$size-s: 14px;
+
+//正文（小）
+$size-s: 13px;
+
+//辅助文字
+$size-xxs: 12px;
+
+//-------------颜色
+//主色
+$primary-color: #409EFF;
+
+// 辅助色: 除了主色外的场景色，需要在不同的场景中使用（例如危险色表示危险的操作）。
+// 成功
+$success-color: #67C23A;
+
+// 警告
+$warning-color: #EB9E05;
+
+// 危险
+$danger-color: #FA5555;
+
+// 信息
+$info-color: #878D99;
+
+// 中性色: 用于文本、背景和边框颜色。通过运用不同的中性色，来表现层次结构。
+// 重要的
+$important-color: #2D2F33;
+
+// 常规的
+$normal-color: #5A5E66;
+
+// 次要的
+$secondary-color: #878D99;
+
+// 占位的
+$seat-color: #B4BCCC;
+
+// 重要的 ，一级边框
+$important-border-color: #D8DCE5;
+
+// 常规的 ，二级边框
+$normal-border-color: #DFE4ED;
+
+// 次要的 ，三级边框
+$secondary-border-color: #E6EBF5;
+
+// 占位的，四级边框
+$seat-border-color: #EDF2FC;
