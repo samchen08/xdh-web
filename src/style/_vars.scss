@@ -1,4 +1,3 @@
-
 //------------ 字体
 $font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 
@@ -24,6 +23,9 @@ $size-xxs: 12px;
 //-------------颜色
 //主色
 $primary-color: #409EFF;
+
+// 主色反相
+$primary-reverse-color: #fff;
 
 // 辅助色: 除了主色外的场景色，需要在不同的场景中使用（例如危险色表示危险的操作）。
 // 成功

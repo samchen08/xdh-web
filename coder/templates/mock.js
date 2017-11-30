@@ -22,7 +22,7 @@ export default [
         <%=item.limit%>: 10
       },
      <%if(item.template){%>
-        template: <%=item.template%>
+        template: <%=item.template%> }
      <%} else {%>
         template: {
           <%=code%>: <%=codeValue%>,
@@ -34,6 +34,7 @@ export default [
           }
         }
       }
+      
       <%}%>
   <%}%>
   
