@@ -6,8 +6,9 @@ import router from './router'
 import store from './store/index'
 
 import './helper/element-ui'
-import './mock/index'
 import './style/index.scss'
+
+import './mock/index'
 
 Vue.config.productionTip = false
 

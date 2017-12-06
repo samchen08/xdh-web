@@ -1,0 +1,12 @@
+@import "../vars";
+@import "../widgets-vars";
+
+.xdh-menu {
+  border: none;
+
+  .el-submenu.is-active {
+    background: $menu-active-background-color;
+  }
+}
+
+

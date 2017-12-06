@@ -4,8 +4,8 @@ export default {
   routes: [
     {
       path: '/',
-      name: 'Hello',
-      component: _import('hello-world')
+      name: 'index',
+      component: _import('index')
     }
   ]
 }

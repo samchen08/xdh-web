@@ -1,0 +1,41 @@
+@import "../vars";
+@import "../widgets-vars";
+
+@mixin toggle-common {
+  position: absolute;
+  top: 0;
+  transition: transform 0.3s;
+}
+
+.xdh-menu-toggle {
+  position: relative;
+  height: 100%;
+
+  @at-root {
+    &--expand {
+      width: 100%;
+      height: 100%;
+    }
+
+    &--collapse {
+      @include toggle-common;
+      transform: translate3d(-100%, 0, 0);
+      z-index: $menu-toggle-index;
+    }
+
+    &--expand {
+      @include toggle-common;
+    }
+  }
+
+  &.is-collapse {
+    .xdh-menu-toggle--collapse {
+      transform: translate3d(0, 0, 0);
+    }
+
+    .xdh-menu-toggle--expand {
+      transform: translate3d(-200%, 0, 0);
+    }
+  }
+}
+

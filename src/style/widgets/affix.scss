@@ -1,0 +1,7 @@
+@import "../vars";
+@import "../widgets-vars";
+
+.xdh-affix {
+  position: fixed;
+  z-index: $index-affix;
+}

@@ -1,66 +1,101 @@
 //------------ 字体
-$font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+$--font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
 
-//-------------字体大小
-//主标题
-$size-xl: 20px;
 
-// 标题
-$size-l: 18px;
+// Element Chalk Variables ------------>>>>>>>>>>>>>>>>>>>>>>>>>>
+// Transition
+$--all-transition: all .3s cubic-bezier(.645, .045, .355, 1) !default;
+$--fade-transition: opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) !default;
+$--fade-linear-transition: opacity 200ms linear !default;
+$--md-fade-transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms, opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms !default;
+$--border-transition-base: border-color .2s cubic-bezier(.645, .045, .355, 1) !default;
+$--color-transition-base: color .2s cubic-bezier(.645, .045, .355, 1) !default;
 
-// 小标题
-$size-m: 16px;
+// Colors
+$--color-white: #fff !default;
+$--color-black: #000 !default;
 
-// 正文
-$size-s: 14px;
+$--color-primary: #409EFF !default;
+$--color-primary-light-1: mix($--color-white, $--color-primary, 10%) !default; /* 53a8ff */
+$--color-primary-light-2: mix($--color-white, $--color-primary, 20%) !default; /* 66b1ff */
+$--color-primary-light-3: mix($--color-white, $--color-primary, 30%) !default; /* 79bbff */
+$--color-primary-light-4: mix($--color-white, $--color-primary, 40%) !default; /* 8cc5ff */
+$--color-primary-light-5: mix($--color-white, $--color-primary, 50%) !default; /* a0cfff */
+$--color-primary-light-6: mix($--color-white, $--color-primary, 60%) !default; /* b3d8ff */
+$--color-primary-light-7: mix($--color-white, $--color-primary, 70%) !default; /* c6e2ff */
+$--color-primary-light-8: mix($--color-white, $--color-primary, 80%) !default; /* d9ecff */
+$--color-primary-light-9: mix($--color-white, $--color-primary, 90%) !default; /* ecf5ff */
 
-//正文（小）
-$size-s: 13px;
+$--color-success: #67c23a !default;
+$--color-warning: #eb9e05 !default;
+$--color-danger: #fa5555 !default;
+$--color-info: #878d99 !default;
 
-//辅助文字
-$size-xxs: 12px;
+$--color-success-light: mix($--color-white, $--color-success, 80%) !default;
+$--color-warning-light: mix($--color-white, $--color-warning, 80%) !default;
+$--color-danger-light: mix($--color-white, $--color-danger, 80%) !default;
+$--color-info-light: mix($--color-white, $--color-info, 80%) !default;
 
-//-------------颜色
-//主色
-$primary-color: #409EFF;
+$--color-success-lighter: mix($--color-white, $--color-success, 90%) !default;
+$--color-warning-lighter: mix($--color-white, $--color-warning, 90%) !default;
+$--color-danger-lighter: mix($--color-white, $--color-danger, 90%) !default;
+$--color-info-lighter: mix($--color-white, $--color-info, 90%) !default;
 
-// 主色反相
-$primary-reverse-color: #fff;
+$--color-text-primary: #2d2f33 !default;
+$--color-text-regular: #5a5e66 !default;
+$--color-text-secondary: #878d99 !default;
+$--color-text-placeholder: #b4bccc !default;
 
-// 辅助色: 除了主色外的场景色，需要在不同的场景中使用（例如危险色表示危险的操作）。
-// 成功
-$success-color: #67C23A;
+// Link
+$--link-color: $--color-primary-light-2 !default;
+$--link-hover-color: $--color-primary !default;
 
-// 警告
-$warning-color: #EB9E05;
+// Background
+$--background-color-base: #f5f7fa !default;
 
-// 危险
-$danger-color: #FA5555;
+// Border
+$--border-width-base: 1px !default;
+$--border-style-base: solid !default;
+$--border-color-base: #d8dce5 !default;
+$--border-color-light: #dfe4ed !default;
+$--border-color-lighter: #e6ebf5 !default;
+$--border-color-extra-light: #edf2fc !default;
+$--border-color-hover: $--color-text-placeholder !default;
+$--border-base: $--border-width-base $--border-style-base $--border-color-base !default;
+$--border-radius-base: 4px !default;
+$--border-radius-small: 2px !default;
+$--border-radius-circle: 100% !default;
 
-// 信息
-$info-color: #878D99;
+// Box-shadow
+$--box-shadow-base: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04) !default;
+$--box-shadow-dark: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .12) !default;
+$--box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1) !default;
 
-// 中性色: 用于文本、背景和边框颜色。通过运用不同的中性色，来表现层次结构。
-// 重要的
-$important-color: #2D2F33;
+// Fill
+$--fill-base: $--color-white !default;
 
-// 常规的
-$normal-color: #5A5E66;
+// Font
+$--font-path: '../../node_modules/element-ui/lib/theme-chalk/fonts';
+$--font-size-base: 14px !default;
+$--font-size-small: 13px !default;
+$--font-size-large: 18px !default;
+$--font-color-disabled-base: #bbb !default;
+$--font-weight-primary: 500 !default;
+$--font-line-height-primary: 24px !default;
 
-// 次要的
-$secondary-color: #878D99;
+// Size
+$--size-base: 14px !default;
 
-// 占位的
-$seat-color: #B4BCCC;
+// z-index
+$--index-normal: 1 !default;
+$--index-top: 1000 !default;
+$--index-popper: 2000 !default;
 
-// 重要的 ，一级边框
-$important-border-color: #D8DCE5;
+// Disable base
+$--disabled-fill-base: $--background-color-base !default;
+$--disabled-color-base: $--color-text-placeholder !default;
+$--disabled-border-base: $--border-color-light !default;
 
-// 常规的 ，二级边框
-$normal-border-color: #DFE4ED;
-
-// 次要的 ，三级边框
-$secondary-border-color: #E6EBF5;
-
-// 占位的，四级边框
-$seat-border-color: #EDF2FC;
+// Icon
+$--icon-color: #666 !default;
+$--icon-color-base: $--color-info !default;

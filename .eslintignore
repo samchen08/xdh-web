@@ -1,2 +1,5 @@
 build/*.js
 config/*.js
+test/**/*.js
+src/assets/**/*.js
+static/**/*.js

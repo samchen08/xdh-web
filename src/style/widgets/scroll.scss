@@ -1,0 +1,28 @@
+
+.xdh-scroll {
+  &-wrapper {
+    width: auto;
+    margin: 0 auto;
+    position: relative;
+    outline: none;
+  }
+
+  &-container {
+    overflow-y: scroll;
+  }
+
+  &-content {
+    opacity: 1;
+    transition: opacity 0.5s;
+  }
+
+  &-content-loading {
+    opacity: 0.5;
+  }
+
+  &-loader {
+    text-align: center;
+    padding: 0;
+    transition: padding 0.5s;
+  }
+}

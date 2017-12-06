@@ -1,0 +1,23 @@
+@import "../vars";
+@import "../widgets-vars";
+
+.xdh-layout {
+  min-height: 100%;
+
+  &--aside {
+    overflow: visible;
+  }
+
+  &--main {
+    padding: 0;
+  }
+
+  &--wrapper {
+    height: 100%;
+  }
+
+  &__fixed {
+    height: 100%;
+
+  }
+}

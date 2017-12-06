@@ -1,0 +1,49 @@
+@import "../vars";
+@import "../widgets-vars";
+
+@mixin avatar-size($size, $font-size) {
+  width: $size;
+  height: $size;
+  line-height: $size;
+  border-radius: $size / 2;
+  & > * {
+    line-height: $size;
+  }
+
+  &.xdh-avatar-icon {
+    font-size: $font-size;
+  }
+}
+
+.xdh-avatar {
+  display: inline-block;
+  text-align: center;
+  background: $avatar-bg;
+  color: $avatar-color;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+
+  @include avatar-size($avatar-size-base, $avatar-font-size-base);
+
+  @at-root {
+    &-large {
+      @include avatar-size($avatar-size-lg, $avatar-font-size-lg);
+    }
+
+    &-small {
+      @include avatar-size($avatar-size-sm, $avatar-font-size-sm);
+    }
+
+    &-square {
+      border-radius: $avatar-border-radius;
+    }
+  }
+
+  & > img {
+    width: 100%;
+    height: 100%;
+  }
+
+}

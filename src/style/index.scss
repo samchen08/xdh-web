@@ -1,8 +1,29 @@
 @import "vars";
 @import "mixin";
+@import "~element-ui/packages/theme-chalk/src/index";
+@import "widgets/index";
 
 html, body {
   margin: 0;
   padding: 0;
-  font-family: $font-family;
+  font-family: $--font-family;
+  font-size: $--font-size-base;
+  height: 100%;
+}
+
+.app-layout {
+  .el-header {
+    background: $--color-primary;
+  }
+
+  .el-footer {
+    background: $--color-primary-light-8;
+  }
+  .el-aside {
+    background: $--color-white;
+    border-right: 1px solid $--border-color-base;
+  }
+  .nav-menu {
+    background: $--color-white;
+  }
 }

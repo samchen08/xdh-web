@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="app-init">
     <router-view/>
   </div>
 </template>
@@ -11,5 +11,7 @@
 </script>
 
 <style type="text/scss" lang="scss" scoped>
-
+  .app-init {
+    height: 100%;
+  }
 </style>

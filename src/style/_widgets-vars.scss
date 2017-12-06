@@ -1,0 +1,26 @@
+@import "vars";
+
+// xdh-layout
+
+// xdh-avatar
+$avatar-size-base: 32px !default;
+$avatar-size-lg: 40px !default;
+$avatar-size-sm: 24px !default;
+$avatar-font-size-base: 18px !default;
+$avatar-font-size-lg: 24px !default;
+$avatar-font-size-sm: 14px !default;
+$avatar-bg: $--color-text-placeholder !default;
+$avatar-color: $--color-white !default;
+$avatar-border-radius: $--border-radius-base !default;
+
+// xdh-menu
+$menu-active-background-color: $--color-success-lighter;
+
+// xdh-menu-toggle
+$menu-toggle-index: $--index-top;
+
+// xdh-affix
+$index-affix: $--index-top;
+
+// xdh-timeline
+$timeline-color: $--border-color-lighter;
