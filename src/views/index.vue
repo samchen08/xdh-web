@@ -3,12 +3,25 @@
     <h1 slot="header">Header</h1>
 
     <div ref="main">
+      <div style="padding: 20px;">
+
+        <xdh-tree-table :data="treeData" :show-checkbox="true" @node-click="handleClick" highlight-current>
+          <xdh-tree-table-column prop="id" label="ID"></xdh-tree-table-column>
+          <xdh-tree-table-column prop="label" label="标签" width="120px">
+            <template slot-scope="scope">
+              {{scope.label}}
+            </template>
+          </xdh-tree-table-column>
+          <xdh-tree-table-column prop="id" label="ID" width="100px"></xdh-tree-table-column>
+        </xdh-tree-table>
+      </div>
+
+
     </div>
     <xdh-menu-toggle
       ref="aside"
       slot="aside"
       :data="menus"
-      @change="handleChange"
       :collapse="collapse"></xdh-menu-toggle>
   </xdh-layout>
 </template>
@@ -26,6 +39,8 @@
 <script>
   import XdhLayout from '../widgets/xdh-layout'
   import XdhMenuToggle from '../widgets/xdh-menu-toggle'
+  import XdhTreeTable from '../widgets/xdh-tree-table'
+  import XdhTreeTableColumn from '../widgets/xdh-tree-table-column'
 
   const menuData = [
     {
@@ -92,13 +107,53 @@
       group: null
     }]
 
+  const treeData = [
+    {
+      id: 1,
+      label: '一级 1',
+      children: [{
+        id: 4,
+        label: '二级 1-1',
+        children: [{
+          id: 9,
+          label: '三级 1-1-1'
+        }, {
+          id: 10,
+          label: '三级 1-1-2'
+        }]
+      }]
+    }, {
+      id: 2,
+      label: '一级 2',
+      children: [{
+        id: 5,
+        label: '二级 2-1'
+      }, {
+        id: 6,
+        label: '二级 2-2'
+      }]
+    }, {
+      id: 3,
+      label: '一级 3',
+      children: [{
+        id: 7,
+        label: '二级 3-1'
+      }, {
+        id: 8,
+        label: '二级 3-2'
+      }]
+    }]
+
   export default {
     components: {
       XdhLayout,
-      XdhMenuToggle
+      XdhMenuToggle,
+      XdhTreeTable,
+      XdhTreeTableColumn
     },
     data () {
       return {
+        treeData: treeData,
         menus: menuData,
         collapse: false,
         asideWidth: '250px'
@@ -109,7 +164,11 @@
         this.asideWidth = val ? '65px' : '250px'
       }
     },
-    methods: {},
+    methods: {
+      handleClick () {
+        console.log(arguments)
+      }
+    },
     created () {
     }
   }

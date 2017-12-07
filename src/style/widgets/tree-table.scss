@@ -1,0 +1,77 @@
+@import "../vars";
+@import "../widgets-vars";
+
+.xdh-tree-table {
+  font-size: 0;
+  color: $--color-text-regular;
+  @at-root {
+    &__tree {
+      border: 1px solid #dfe6ec;
+    }
+  }
+
+  .el-tree-node__expand-icon, .el-checkbox, &__tr, &__th, &__td {
+    display: inline-block;
+    font-size: $--font-size-base;
+  }
+
+  .el-tree-node__content {
+    border-bottom: 1px solid #dfe6ec;
+    height: 40px;
+    line-height: 40px;
+  }
+
+  &__header {
+    border: 1px solid $--border-color-base;
+    border-bottom: none;
+    overflow: hidden;
+  }
+
+  &__th {
+    height: 40px;
+    line-height: 40px;
+    font-weight: bold;
+    border-right: 1px solid #dfe6ec;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    word-break: keep-all;
+    border-collapse: collapse;
+
+    &:last-child {
+      border-right: none;
+    }
+
+    span {
+      padding: 0 18px;
+    }
+  }
+
+  &__td {
+    border-right: 1px solid #dfe6ec;
+
+    > span {
+      box-sizing: border-box;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: normal;
+      word-break: keep-all;
+      line-height: 24px;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+
+    &:last-child {
+      border-right: 0;
+    }
+
+    &:first-child > span {
+      padding-left: 0 !important;
+    }
+  }
+
+  .el-tree {
+    border-bottom: none;
+  }
+
+}
