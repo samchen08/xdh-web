@@ -61,6 +61,8 @@ el-tree的方法通过实例 this.tree 调用
 
 ## 事件
 
-支持 el-tree 提供的时间，用法一样
+支持 el-tree 提供的事件，用法一样
+
+## 更新日志
 
 - 2017-11-07 新增 by：chenhuachun
