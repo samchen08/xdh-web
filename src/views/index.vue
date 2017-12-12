@@ -16,6 +16,7 @@
         </xdh-tree-table>
       </div>
 
+      <xdh-echarts :option="option" type="line" :data="chartData" style="width: 100%; height: 300px;"></xdh-echarts>
 
     </div>
     <xdh-menu-toggle
@@ -41,6 +42,7 @@
   import XdhMenuToggle from '../widgets/xdh-menu-toggle'
   import XdhTreeTable from '../widgets/xdh-tree-table'
   import XdhTreeTableColumn from '../widgets/xdh-tree-table-column'
+  import XdhEcharts from '../widgets/xdh-echarts'
 
   const menuData = [
     {
@@ -106,6 +108,14 @@
       text: '云服务三',
       group: null
     }]
+  const chartData = [
+    {name: '衬衫', value: 5},
+    {name: '羊毛衫', value: 25},
+    {name: '雪纺衫', value: 15},
+    {name: '裤子', value: 20},
+    {name: '高跟鞋', value: 10},
+    {name: '高跟鞋', value: 5}
+  ]
 
   const treeData = [
     {
@@ -149,14 +159,22 @@
       XdhLayout,
       XdhMenuToggle,
       XdhTreeTable,
-      XdhTreeTableColumn
+      XdhTreeTableColumn,
+      XdhEcharts
     },
     data () {
       return {
         treeData: treeData,
         menus: menuData,
         collapse: false,
-        asideWidth: '250px'
+        asideWidth: '250px',
+        chartData: chartData,
+        option: {
+          color: ['#000'],
+          title: {
+            text: 'my title'
+          }
+        }
       }
     },
     watch: {
@@ -170,6 +188,13 @@
       }
     },
     created () {
+      setTimeout(_ => {
+//        this.option.title.text = 'dddd'
+        this.chartData.push({
+          name: '达到',
+          value: 30
+        })
+      }, 5000)
     }
   }
 </script>

@@ -8,6 +8,7 @@ import store from './store/index'
 import './helper/element-ui'
 import './style/index.scss'
 
+// 发布生产环境需要把模拟数据注释
 import './mock/index'
 
 Vue.config.productionTip = false
