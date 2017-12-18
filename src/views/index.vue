@@ -15,8 +15,10 @@
           <xdh-tree-table-column prop="id" label="ID" width="100px"></xdh-tree-table-column>
         </xdh-tree-table>
       </div>
-
+      <xdh-tree-select></xdh-tree-select>
       <xdh-echarts :option="option" type="line" :data="chartData" style="width: 100%; height: 300px;"></xdh-echarts>
+
+
 
     </div>
     <xdh-menu-toggle
@@ -43,6 +45,7 @@
   import XdhTreeTable from '../widgets/xdh-tree-table'
   import XdhTreeTableColumn from '../widgets/xdh-tree-table-column'
   import XdhEcharts from '../widgets/xdh-echarts'
+  import XdhTreeSelect from '../widgets/xdh-tree-select'
 
   const menuData = [
     {
@@ -160,7 +163,8 @@
       XdhMenuToggle,
       XdhTreeTable,
       XdhTreeTableColumn,
-      XdhEcharts
+      XdhEcharts,
+      XdhTreeSelect
     },
     data () {
       return {
