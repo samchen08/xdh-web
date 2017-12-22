@@ -32,7 +32,6 @@
 | option | echarts 配置项 | Object | - | null |
 | type | 指定图表类型 | line/bar/pie/radar/map | - | null |
 | data | 图表数据 | Array/Object | - | null |
-| map-code | 地图文件编码 | String | - | - |
 | loading| 是否显示loading效果 | Boolean | - | false |
 
 ## 方法

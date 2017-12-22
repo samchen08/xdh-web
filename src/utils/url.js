@@ -1,4 +1,5 @@
 import pathToRegex from 'path-to-regexp'
+
 const hostRegex = /^(http|https):\/\/[\w.:]*\//
 
 /**
@@ -84,8 +85,9 @@ export function getParams (regexUrl, url) {
  */
 export function appendQuery (url, query) {
   query = typeof query === 'string' ? parse(query) : query
+  const path = url.split('?')[0]
   const originalQuery = parse(url)
   const joinQuery = Object.assign({}, originalQuery, query)
   const queryStr = stringify(joinQuery)
-  return queryStr ? url + '?' + queryStr : url
+  return queryStr ? [path, queryStr].join('?') : url
 }

@@ -15,10 +15,15 @@
           <xdh-tree-table-column prop="id" label="ID" width="100px"></xdh-tree-table-column>
         </xdh-tree-table>
       </div>
-      <xdh-tree-select></xdh-tree-select>
+      <div style="padding: 20px">
+        <xdh-tree-select :data="treeData" node-key="id" v-model="treeValue" :width="300">
+          <template slot-scope="scope">
+            <el-input :value="scope.nodes.map(n=>n.label)" readonly  suffix-icon="el-icon-caret-bottom"></el-input>
+          </template>
+        </xdh-tree-select>
+      </div>
+
       <xdh-echarts :option="option" type="line" :data="chartData" style="width: 100%; height: 300px;"></xdh-echarts>
-
-
 
     </div>
     <xdh-menu-toggle
@@ -46,6 +51,7 @@
   import XdhTreeTableColumn from '../widgets/xdh-tree-table-column'
   import XdhEcharts from '../widgets/xdh-echarts'
   import XdhTreeSelect from '../widgets/xdh-tree-select'
+  import { log } from '../utils/consle'
 
   const menuData = [
     {
@@ -178,7 +184,10 @@
           title: {
             text: 'my title'
           }
-        }
+        },
+        testIndex: 2,
+        testValue: 10,
+        treeValue: [5]
       }
     },
     watch: {
@@ -199,6 +208,7 @@
           value: 30
         })
       }, 5000)
+      log('abc', arguments)
     }
   }
 </script>

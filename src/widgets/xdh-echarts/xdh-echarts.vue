@@ -8,7 +8,6 @@
 <script>
   import echarts from 'echarts'
   import charts from './charts'
-  import loader from './map/loader'
   import { addResizeListener, removeResizeListener } from 'element-ui/lib/utils/resize-event'
 
   export default {
@@ -28,10 +27,7 @@
           return !!charts[value]
         }
       },
-      data: [Object, Array],
-      mapCode: {
-        type: String
-      }
+      data: [Object, Array]
     },
     data () {
       return {
@@ -71,17 +67,6 @@
       resize () {
         this.chart && this.chart.resize()
       },
-      registerMap () {
-        let map = echarts.getMap(this.mapCode)
-        if (map) {
-          return Promise.resolve(map)
-        } else {
-          return loader(this.mapCode).then(json => {
-            echarts.registerMap(this.mapCode, json)
-            return json
-          })
-        }
-      },
       optionRender () {
         return new Promise((resolve, reject) => {
           // 是否有设置图表类型
@@ -100,17 +85,9 @@
     mounted () {
       this.chart = echarts.init(this.$el)
       this.loading ? this.chart.showLoading() : this.chart.hideLoading()
-      if (this.type && this.mapCode) {
-        this.registerMap().then(res => {
-          this.data && this.optionRender(this.data, this.option).then(opt => {
-            this.chartOption = opt
-          })
-        })
-      } else {
-        this.data && this.optionRender(this.data, this.option).then(opt => {
-          this.chartOption = opt
-        })
-      }
+      this.data && this.optionRender(this.data, this.option).then(opt => {
+        this.chartOption = opt
+      })
       addResizeListener(this.$el, this.resize)
       this.$emit('init', this.chart)
     },

@@ -1,63 +1,92 @@
 <template>
-  <el-popover placement="bottom" width="326" trigger="click">
-    <div style="height: 250px;">
-      <el-scrollbar style="height: 200px;">
-        <el-tree :data="data" show-checkbox></el-tree>
+  <el-popover v-model="visible" placement="bottom" trigger="click" :width="popoverWidth"
+              popper-class="xdh-tree-select__popover">
+    <div class="xdh-tree-select__bd">
+      <el-scrollbar>
+        <tree-select :tree="treeProps" ref="treeSelect"></tree-select>
       </el-scrollbar>
       <div class="xdh-tree-select__btns">
-        <el-button type="text">清空</el-button>
-        <el-button size="mini">确定</el-button>
+        <el-button type="text" size="mini" @click="clearChecked">清空</el-button>
+        <el-button size="mini" type="primary" @click="handleSelected">确定</el-button>
       </div>
     </div>
-    <el-input slot="reference" style="width: 350px;"></el-input>
+    <div class="xdh-tree-select__reference" slot="reference" :style="{width:width+'px'}" ref="reference">
+      <slot :value="value" :nodes="currentCheckedNodes">
+        <el-input :value="value.join(',')" readonly  suffix-icon="el-icon-caret-bottom"></el-input>
+      </slot>
+    </div>
+
+
   </el-popover>
 </template>
 
 
 <script>
-  const treeData = [{
-    label: '一级 1',
-    children: [{
-      label: '二级 1-1',
-      children: [{
-        label: '三级 1-1-1'
-      }]
-    }]
-  }, {
-    label: '一级 2',
-    children: [{
-      label: '二级 2-1',
-      children: [{
-        label: '三级 2-1-1'
-      }]
-    }, {
-      label: '二级 2-2',
-      children: [{
-        label: '三级 2-2-1'
-      }]
-    }]
-  }, {
-    label: '一级 3',
-    children: [{
-      label: '二级 3-1',
-      children: [{
-        label: '三级 3-1-1'
-      }]
-    }, {
-      label: '二级 3-2',
-      children: [{
-        label: '三级 3-2-1'
-      }]
-    }]
-  }]
+  import { Tree } from 'element-ui'
+  import { addResizeListener, removeResizeListener } from 'element-ui/lib/utils/resize-event'
+  import throttle from 'lodash.throttle'
+  import TreeSelect from './components/tree-select.vue'
+
+  const treeProps = Object.assign({}, Tree.props)
 
   export default {
     name: 'XdhTreeSelect',
-    props: {},
+    components: {
+      TreeSelect
+    },
+    props: {
+      ...treeProps,
+      width: {
+        type: Number
+      },
+      value: {
+        type: Array
+      }
+    },
     data () {
       return {
-        data: treeData
+        treeProps: {
+          ...this.$props,
+          showCheckbox: true,
+          defaultCheckedKeys: this.value
+        },
+        popoverWidth: 'auto',
+        visible: false,
+        currentCheckedNodes: []
       }
+    },
+    methods: {
+      setPopoverWidth () {
+        let width = this.width ? this.width : this.$refs.reference.getBoundingClientRect().width
+        this.popoverWidth = width - 25
+      },
+      clearChecked () {
+        this.$refs.treeSelect.$refs.tree.setCheckedNodes([])
+      },
+      handleSelected () {
+        let nodes = this.$refs.treeSelect.$refs.tree.getCheckedNodes()
+        this.currentCheckedNodes = nodes
+        this.visible = false
+        this.$emit('on-selected', nodes)
+        if (this.nodeKey) {
+          let keys = nodes.map(node => node[this.nodeKey])
+          this.$emit('input', keys)
+        }
+      }
+    },
+    created () {
+      this.handleSetPopoverWidth = throttle(this.setPopoverWidth, 150, {leading: false})
+    },
+    mounted () {
+      if (this.value) {
+        let nodes = this.$refs.treeSelect.$refs.tree.getCheckedNodes()
+        this.currentCheckedNodes = nodes
+      }
+      this.setPopoverWidth()
+      addResizeListener(this.$refs.reference, this.handleSetPopoverWidth)
+    },
+    beforeDestroy () {
+      removeResizeListener(this.$refs.reference, this.handleSetPopoverWidth)
     }
   }
 </script>

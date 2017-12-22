@@ -1,5 +1,4 @@
 import defaultsDeep from 'lodash/defaultsDeep'
-
 const option = {
   title: {
     text: ''

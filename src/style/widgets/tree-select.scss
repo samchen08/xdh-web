@@ -1,0 +1,29 @@
+@import "../vars";
+@import "../widgets-vars";
+
+.xdh-tree-select {
+
+  &__popover {
+    width: 100%;
+  }
+
+  &__bd {
+    height: 250px;
+
+    .el-scrollbar {
+      height: calc(100% - 40px)
+    }
+  }
+
+  &__btns {
+    padding-top: 12px;
+    text-align: right;
+    border-top: 1px solid $--border-color-light;
+  }
+
+  &__reference {
+    display: inline-block;
+    cursor: pointer;
+  }
+
+}
