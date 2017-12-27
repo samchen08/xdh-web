@@ -89,3 +89,12 @@ export function scrollTop (el, from = 0, to, duration = 500) {
 
   scroll(from, to, step)
 }
+
+export function insertAfter (newEl, targetEl) {
+  const parentEl = targetEl.parentNode
+  if (parentEl.lastChild === targetEl) {
+    parentEl.appendChild(newEl)
+  } else {
+    parentEl.insertBefore(newEl, targetEl.nextSibling)
+  }
+}

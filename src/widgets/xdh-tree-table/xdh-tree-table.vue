@@ -1,7 +1,28 @@
 <template>
   <div :class="prefixCls">
     <table-header :columns="columns" :width-array="headerWidthArray"></table-header>
-    <table-tree :tree="treeProps" ref="tableTree"></table-tree>
+    <el-tree
+      class="xdh-tree-table__tree"
+      :data="data"
+      :empty-text="emptyText"
+      :node-key="nodeKey"
+      :props="props"
+      :render-after-expand="renderAfterExpand"
+      :load="load"
+      :render-content="renderContent"
+      :highlight-current="highlightCurrent"
+      :default-expand-all="defaultExpandAll"
+      :expand-on-click-node="expandOnClickNode"
+      :auto-expand-parent="autoExpandParent"
+      :default-expanded-keys="defaultExpandedKeys"
+      :show-checkbox="showCheckbox"
+      :check-strictly="checkStrictly"
+      :default-checked-keys="defaultCheckedKeys"
+      :filter-node-method="filterNodeMethod"
+      :accordion="accordion"
+      :indent="indent"
+      ref="tree"></el-tree>
+
     <div style="display: none;" :class="`${prefixCls}__hidden`">
       <slot></slot>
     </div>
@@ -11,7 +32,6 @@
 <script>
   import { Tree } from 'element-ui'
   import TableHeader from './components/table-header.vue'
-  import TableTree from './components/table-tree.vue'
 
   const BORDER_WIDTH = 1
   const ARROW_WIDTH = 24
@@ -24,8 +44,7 @@
   export default {
     name: 'XdhTreeTable',
     components: {
-      TableHeader,
-      TableTree
+      TableHeader
     },
     props: {
       ...treeProps
@@ -33,16 +52,12 @@
     data () {
       return {
         prefixCls: 'xdh-tree-table',
-        columns: [],
-        treeProps: {
-          ...this.$props,
-          renderContent: (h, context) => this.renderContent(h, context)
-        }
+        columns: []
       }
     },
     computed: {
       tree () {
-        return this.$refs.tableTree.$refs.tree
+        return this.$refs.tree
       },
       tableWidth () {
         // 判断是否有checkbox

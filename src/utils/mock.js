@@ -1,10 +1,11 @@
 import Mock from 'mockjs'
 import pathToRegex from 'path-to-regexp'
 import { parse, getParams } from './url'
+import { log } from './consle'
 
 // 模拟请求延时时间
 Mock.setup({
-  timeout: '50-300'
+  timeout: '10-50'
 })
 
 function getBody (body) {
@@ -43,11 +44,12 @@ export default function (item) {
       for (let key in query) {
         templateString = templateString.replace(new RegExp('{{' + key + '}}', 'g'), query[key])
       }
+
       // 返回模拟数据
       result = Mock.mock(JSON.parse(templateString))
     }
     // 打印模拟请求日志
-    console.info('【Mock】' + item.title + ' :', options, result, '\n----------------------')
+    log('【Mock】' + item.title + ' :', options, result, '\n----------------------')
     return result
   })
 }

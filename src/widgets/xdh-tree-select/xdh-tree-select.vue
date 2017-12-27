@@ -3,7 +3,26 @@
               popper-class="xdh-tree-select__popover">
     <div class="xdh-tree-select__bd">
       <el-scrollbar>
-        <tree-select :tree="treeProps" ref="treeSelect"></tree-select>
+        <el-tree
+          :data="data"
+          :empty-text="emptyText"
+          :node-key="nodeKey"
+          :props="props"
+          :render-after-expand="renderAfterExpand"
+          :load="load"
+          :render-content="renderContent"
+          :highlight-current="highlightCurrent"
+          :default-expand-all="defaultExpandAll"
+          :expand-on-click-node="expandOnClickNode"
+          :auto-expand-parent="autoExpandParent"
+          :default-expanded-keys="defaultExpandedKeys"
+          :show-checkbox="showCheckbox"
+          :check-strictly="checkStrictly"
+          :default-checked-keys="value"
+          :filter-node-method="filterNodeMethod"
+          :accordion="accordion"
+          :indent="indent"
+          ref="tree"></el-tree>
       </el-scrollbar>
       <div class="xdh-tree-select__btns">
         <el-button type="text" size="mini" @click="clearChecked">清空</el-button>
@@ -12,11 +31,9 @@
     </div>
     <div class="xdh-tree-select__reference" slot="reference" :style="{width:width+'px'}" ref="reference">
       <slot :value="value" :nodes="currentCheckedNodes">
-        <el-input :value="value.join(',')" readonly  suffix-icon="el-icon-caret-bottom"></el-input>
+        <el-input :value="value.join(',')" readonly suffix-icon="el-icon-caret-bottom"></el-input>
       </slot>
     </div>
-
-
   </el-popover>
 </template>
 
@@ -25,17 +42,19 @@
   import { Tree } from 'element-ui'
   import { addResizeListener, removeResizeListener } from 'element-ui/lib/utils/resize-event'
   import throttle from 'lodash.throttle'
-  import TreeSelect from './components/tree-select.vue'
 
   const treeProps = Object.assign({}, Tree.props)
 
   export default {
     name: 'XdhTreeSelect',
-    components: {
-      TreeSelect
-    },
     props: {
       ...treeProps,
+
+      // 重写默认显示checkbox
+      showCheckbox: {
+        type: Boolean,
+        default: true
+      },
       width: {
         type: Number
       },
@@ -43,13 +62,16 @@
         type: Array
       }
     },
+    watch: {
+      data (val) {
+        this.$nextTick(() => {
+          let nodes = this.$refs.tree.getCheckedNodes()
+          this.currentCheckedNodes = nodes
+        })
+      }
+    },
     data () {
       return {
-        treeProps: {
-          ...this.$props,
-          showCheckbox: true,
-          defaultCheckedKeys: this.value
-        },
         popoverWidth: 'auto',
         visible: false,
         currentCheckedNodes: []
@@ -61,10 +83,10 @@
         this.popoverWidth = width - 25
       },
       clearChecked () {
-        this.$refs.treeSelect.$refs.tree.setCheckedNodes([])
+        this.$refs.tree.setCheckedNodes([])
       },
       handleSelected () {
-        let nodes = this.$refs.treeSelect.$refs.tree.getCheckedNodes()
+        let nodes = this.$refs.tree.getCheckedNodes()
         this.currentCheckedNodes = nodes
         this.visible = false
         this.$emit('on-selected', nodes)
@@ -79,7 +101,7 @@
     },
     mounted () {
       if (this.value) {
-        let nodes = this.$refs.treeSelect.$refs.tree.getCheckedNodes()
+        let nodes = this.$refs.tree.getCheckedNodes()
         this.currentCheckedNodes = nodes
       }
       this.setPopoverWidth()
