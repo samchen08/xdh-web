@@ -405,8 +405,8 @@ export default {
     el.__draggable__ = new Draggable(window.document, el, binding.value)
   },
   componentUpdated (el, binding) {
-    const instance = el.__draggable__
-    instance.reset(binding.value)
+    // const instance = el.__draggable__
+    // instance.reset(binding.value)
   },
   unbind (el) {
     const instance = el.__draggable__

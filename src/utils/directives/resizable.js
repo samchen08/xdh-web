@@ -120,12 +120,7 @@ class Resizable extends Events {
 
   getDirection ({pageX, pageY}) {
     const edge = this.options.edge
-    const data = {
-      left: this.el.offsetLeft,
-      top: this.el.offsetTop,
-      width: this.el.offsetWidth,
-      height: this.el.offsetHeight
-    }
+    const data = this.el.getBoundingClientRect()
     let dir = ''
     if (pageY > data.top && pageY < data.top + edge) {
       dir += 'n'
@@ -259,8 +254,8 @@ export default {
     el.__resizable__ = new Resizable(window.document, el, binding.value)
   },
   componentUpdated (el, binding) {
-    const instance = el.__resizable__
-    instance.reset(binding.value)
+    // const instance = el.__resizable__
+    // instance.reset(binding.value)
   },
   unbind (el) {
     const instance = el.__resizable__

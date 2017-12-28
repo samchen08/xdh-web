@@ -2,6 +2,7 @@
 @import "mixin";
 @import "~element-ui/packages/theme-chalk/src/index";
 @import "widgets/index";
+@import "../assets/icons/iconfont.css";
 
 html, body {
   margin: 0;
@@ -30,11 +31,11 @@ html, body {
 }
 
 .app-layout {
-  .el-header {
+  > .el-header {
     background: $--color-primary;
   }
 
-  .el-footer {
+  > .el-footer {
     background: $--color-primary-light-8;
   }
   .el-aside {

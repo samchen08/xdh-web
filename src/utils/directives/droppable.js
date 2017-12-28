@@ -44,7 +44,6 @@ class Droppable extends Events {
     this.document = document
     this.el = el
     this.init(options)
-    console.log(this.options)
   }
 
   init (options) {
@@ -97,8 +96,8 @@ export default {
     el.__droppable__ = new Droppable(window.document, el, binding.value)
   },
   componentUpdated (el, binding) {
-    const instance = el.__droppable__
-    instance.reset(binding.value)
+    // const instance = el.__droppable__
+    // instance.reset(binding.value)
   },
   unbind (el) {
     const instance = el.__droppable__

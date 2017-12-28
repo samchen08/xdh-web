@@ -23,7 +23,7 @@
       },
       enterClass: {
         type: String,
-        default: 'xdh-droppable--enter'
+        default: 'xdh-dropbox--enter'
       }
     },
     computed: {

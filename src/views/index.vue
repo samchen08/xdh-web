@@ -10,7 +10,6 @@
       <xdh-dropbox accept="one" @on-drop="handleClick"
                    :put="['group1']"
                    style="height: 200px; width: 500px; border: 1px solid red; position: relative; top:80px; margin-bottom: 80px; ">
-        <p>dddddd</p>
       </xdh-dropbox>
 
 
@@ -45,6 +44,20 @@
 
       </div>
 
+
+      <xdh-window
+        title="我的标题"
+        icon="iconfont icon-lock"
+        :collapsible="true"
+        :maximizable="true"
+        :minimizable="true"
+        width="400px"
+        height="200px">
+        <div>
+          <div>我是内容</div>
+        </div>
+
+      </xdh-window>
 
       <!--<div style="padding: 20px;">-->
 
@@ -142,6 +155,7 @@
   import resizable from '../utils/directives/resizable'
   import droppable from '../utils/directives/droppable'
   import XdhDropbox from '../widgets/xdh-dropbox'
+  import XdhWindow from '../widgets/xdh-window'
 
   const menuData = [
     {
@@ -226,7 +240,8 @@
       XdhTreeSelect,
       XdhGrid,
       Draggable,
-      XdhDropbox
+      XdhDropbox,
+      XdhWindow
     },
     mixins: [treeMixin],
     directives: {
