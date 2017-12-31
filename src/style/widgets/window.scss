@@ -6,9 +6,14 @@
   position: absolute;
   background: $--color-white;
   z-index: $--index-top+1;
-  box-shadow: $--box-shadow-base;
   border-radius: $--border-radius-base;
-
+  transition: all 0.5s;
+  &.is-inline {
+    position: static;
+  }
+  &.is-shadow {
+    box-shadow: $--box-shadow-base;
+  }
   &.is-center {
     left: 50%;
     top: 50%;
@@ -16,9 +21,6 @@
   }
   &.is-collapsed {
     overflow: hidden;
-  }
-  &.is-collapsible {
-    transition: height 0.5s;
   }
   &.is-maximized {
     left: 0;
@@ -30,6 +32,9 @@
   &.xdh-resizeable--resizing {
     transition: unset;
   }
+  &.xdh-draggable--dragging {
+    transition: unset;
+  }
 
   & __wrapper {
     position: absolute;
@@ -37,6 +42,10 @@
     top: 0;
     width: 100%;
     height: 100%;
+
+    &.is-inline {
+      position: static;
+    }
   }
 
   &__modal {

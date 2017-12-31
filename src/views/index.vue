@@ -4,60 +4,60 @@
 
     <div ref="main">
 
-      <div v-draggable="{clone:true, disabled:disabled, group:'one'}"
-           style="height: 50px; width: 50px; position: absolute; background: blue"></div>
+      <!--<div v-draggable="{clone:true, disabled:disabled, group:'one'}"-->
+      <!--style="height: 50px; width: 50px; position: absolute; background: blue"></div>-->
 
-      <xdh-dropbox accept="one" @on-drop="handleClick"
-                   :put="['group1']"
-                   style="height: 200px; width: 500px; border: 1px solid red; position: relative; top:80px; margin-bottom: 80px; ">
-      </xdh-dropbox>
-
-
-      <div class="box" ref="box" style="padding: 20px">
-
-        <xdh-grid v-model="chartData" direction="column" wrap="wrap" justify="space-between"
-                  @on-move="handleMove"
-                  :sortable="{sort:false, animation: 150, group:{name:'group1', put:['group2'],pull:'clone'} }"
-                  style="width: 300px;height: 200px;">
-          <template slot-scope="scope">
-            <el-card>
-              {{scope.item.name}}
-            </el-card>
-          </template>
-        </xdh-grid>
-
-        <xdh-grid v-model="chartData2" direction="column" wrap="wrap" justify="space-between"
-                  :sortable="{sort:true, animation: 150, group:{name:'group2', put:['group1']} }"
-                  style="width: 300px;height: 200px; margin-top: 30px">
-          <template slot-scope="scope">
-            <el-card>
-              {{scope.item.name}}
-            </el-card>
-          </template>
-        </xdh-grid>
-
-
-        <div style="padding: 20px">
-          <p v-for="item in chartData">{{item.name}}</p>
-        </div>
-
-
-      </div>
+      <!--<xdh-dropbox accept="one" @on-drop="handleClick"-->
+      <!--:put="['group1']"-->
+      <!--style="height: 200px; width: 500px; border: 1px solid red; position: relative; top:80px; margin-bottom: 80px; ">-->
+      <!--</xdh-dropbox>-->
 
 
       <xdh-window
-        title="我的标题"
+        title="标题"
         icon="iconfont icon-lock"
         :collapsible="true"
         :maximizable="true"
         :minimizable="true"
-        width="400px"
-        height="200px">
+        :shadow="true"
+        width="300px"
+        height="100%"
+        :inline="true">
         <div>
           <div>我是内容</div>
         </div>
-
       </xdh-window>
+
+      <!--<div class="box" ref="box" style="padding: 20px">-->
+
+      <!--<xdh-grid v-model="chartData" direction="column" wrap="wrap" justify="space-between"-->
+      <!--@on-move="handleMove"-->
+      <!--:sortable="{sort:false, animation: 150, group:{name:'group1', put:['group2'],pull:'clone'} }"-->
+      <!--style="width: 300px;height: 200px;">-->
+      <!--<template slot-scope="scope">-->
+      <!--<el-card>-->
+      <!--{{scope.item.name}}-->
+      <!--</el-card>-->
+      <!--</template>-->
+      <!--</xdh-grid>-->
+
+      <!--<xdh-grid v-model="chartData2" direction="column" wrap="wrap" justify="space-between"-->
+      <!--:sortable="{sort:true, animation: 150, group:{name:'group2', put:['group1']} }"-->
+      <!--style="width: 300px;height: 200px; margin-top: 30px">-->
+      <!--<template slot-scope="scope">-->
+      <!--<el-card>-->
+      <!--{{scope.item.name}}-->
+      <!--</el-card>-->
+      <!--</template>-->
+      <!--</xdh-grid>-->
+
+
+      <!--<div style="padding: 20px">-->
+      <!--<p v-for="item in chartData">{{item.name}}</p>-->
+      <!--</div>-->
+
+
+      <!--</div>-->
 
       <!--<div style="padding: 20px;">-->
 
