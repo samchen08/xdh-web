@@ -2,7 +2,11 @@
   <xdh-layout :fixed="false" :aside-width="asideWidth" class="app-layout">
     <h1 slot="header">Header</h1>
 
-    <div ref="main">
+    <div ref="main" style="padding: 20px">
+
+      <xdh-image-picker :data="imageList" v-model="imageValue" size="small"></xdh-image-picker>
+      <xdh-icon-picker :data="icons" v-model="iconValue" size="small"></xdh-icon-picker>
+
 
       <!--<div v-draggable="{clone:true, disabled:disabled, group:'one'}"-->
       <!--style="height: 50px; width: 50px; position: absolute; background: blue"></div>-->
@@ -13,20 +17,20 @@
       <!--</xdh-dropbox>-->
 
 
-      <xdh-window
-        title="标题"
-        icon="iconfont icon-lock"
-        :collapsible="true"
-        :maximizable="true"
-        :minimizable="true"
-        :shadow="true"
-        width="300px"
-        height="100%"
-        :inline="true">
-        <div>
-          <div>我是内容</div>
-        </div>
-      </xdh-window>
+      <!--<xdh-window-->
+      <!--title="标题"-->
+      <!--icon="iconfont icon-lock"-->
+      <!--:collapsible="true"-->
+      <!--:maximizable="true"-->
+      <!--:minimizable="true"-->
+      <!--:shadow="true"-->
+      <!--width="300px"-->
+      <!--height="200px"-->
+      <!--:inline="false">-->
+      <!--<div>-->
+      <!--<div>我是内容</div>-->
+      <!--</div>-->
+      <!--</xdh-window>-->
 
       <!--<div class="box" ref="box" style="padding: 20px">-->
 
@@ -72,12 +76,14 @@
       <!--</xdh-tree-table>-->
       <!--</div>-->
       <!--<div style="padding: 20px">-->
-      <!--<xdh-tree-select :data="treeData" node-key="id" v-model="treeValue" :width="300">-->
-      <!--<template slot-scope="scope">-->
-      <!--<el-input :value="scope.nodes.map(n=>n.label).join(',')" readonly-->
-      <!--suffix-icon="el-icon-caret-bottom"></el-input>-->
-      <!--</template>-->
-      <!--</xdh-tree-select>-->
+      <xdh-tree-select :data="treeData" v-model="treeValue" node-key="id" :showClearBtn="true">
+        <div slot-scope="scope">
+          <el-input :value="`已选中 ${scope.nodes.length} 个`" readonly
+                    suffix-icon="el-icon-caret-bottom" size="small"></el-input>
+          <!--<el-input :value="scope.nodes.map(n=>n.label).join(',')" readonly-->
+          <!--suffix-icon="el-icon-caret-bottom"></el-input>-->
+        </div>
+      </xdh-tree-select>
       <!--</div>-->
 
 
@@ -156,6 +162,10 @@
   import droppable from '../utils/directives/droppable'
   import XdhDropbox from '../widgets/xdh-dropbox'
   import XdhWindow from '../widgets/xdh-window'
+  import XdhImagePicker from '../widgets/xdh-image-picker'
+  import XdhIconPicker from '../widgets/xdh-icon-picker'
+  import icons from '../helper/icons'
+  import XdhAvatar from '../widgets/xdh-avatar'
 
   const menuData = [
     {
@@ -229,6 +239,7 @@
     {name: '高跟鞋5', value: 10},
     {name: '高跟鞋6', value: 5}
   ]
+  const images = ['事务安排', '人事统计', '人员管理', '修改密码', '关键项管理', '事务安排', '人事统计', '人员管理', '修改密码', '关键项管理', '事务安排', '人事统计', '人员管理', '修改密码', '关键项管理', '事务安排', '人事统计', '人员管理', '修改密码', '关键项管理', '事务安排', '人事统计', '人员管理', '修改密码', '关键项管理']
   export default {
     components: {
       XdhScroll,
@@ -241,7 +252,10 @@
       XdhGrid,
       Draggable,
       XdhDropbox,
-      XdhWindow
+      XdhWindow,
+      XdhImagePicker,
+      XdhIconPicker,
+      XdhAvatar
     },
     mixins: [treeMixin],
     directives: {
@@ -266,7 +280,18 @@
         testIndex: 2,
         testValue: 10,
         treeValue: [1],
-        disabled: false
+        disabled: false,
+        images: images,
+        imageValue: 'static/icons/人事统计.png',
+        icons: icons,
+        iconValue: 'iconfont icon-user'
+      }
+    },
+    computed: {
+      imageList () {
+        return this.images.map(item => {
+          return 'static/icons/' + item + '.png'
+        })
       }
     },
     watch: {

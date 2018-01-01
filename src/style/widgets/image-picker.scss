@@ -1,0 +1,70 @@
+@import "../vars";
+@import "../widgets-vars";
+
+.xdh-image-picker {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 2px;
+  border: 1px solid $--border-color-base;
+  border-radius: 4px;
+  font-size: 0;
+  position: relative;
+  cursor: pointer;
+  vertical-align: top;
+
+  &__empty {
+    background: $--color-white;
+    color: $--color-info;
+    border: 1px solid $--color-info
+  }
+  &__value {
+    background: $--color-white;
+    border: 1px solid $--color-white
+  }
+
+  &__bd {
+    height: 250px;
+    .el-scrollbar {
+      height: calc(100% - 40px);
+    }
+
+  }
+
+  &__item {
+    margin: 0 3px 6px 3px;
+    padding: 2px;
+    border: 1px solid $--border-color-light;
+    cursor: pointer;
+    border-radius: $--border-radius-small;
+    display: block;
+
+    &:hover {
+      border-color: $--color-primary;
+      background: $--color-primary-light-9;
+
+    }
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: $--border-radius-small;
+      display: block;
+    }
+    &.is-selected {
+      border-color: $--color-success;
+      background: $--color-success-lighter;
+      color: $--color-success;
+    }
+  }
+  &__value {
+    color: $--color-info;
+    i {
+      font-size: 24px;
+    }
+  }
+
+}
+
+.xdh-icon-picker__icon {
+  font-size: 38px;
+  line-height: 38px;
+}

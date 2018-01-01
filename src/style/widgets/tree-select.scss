@@ -15,15 +15,15 @@
     }
   }
 
-  &__btns {
-    padding-top: 12px;
-    text-align: right;
-    border-top: 1px solid $--border-color-light;
-  }
 
   &__reference {
     display: inline-block;
     cursor: pointer;
   }
 
+}
+.xdh-select-footer {
+  padding-top: 12px;
+  text-align: right;
+  border-top: 1px solid $--border-color-light;
 }

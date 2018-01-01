@@ -35,10 +35,17 @@
 | filter-node-method | 对树节点进行筛选时执行的方法，返回 true 表示这个节点可以显示，返回 false 则表示这个节点会被隐藏 | Function(value, data, node) | - | - |
 | accordion | 是否每次只打开一个同级树节点展开 | boolean | - | false |
 | indent | 相邻级节点间的水平缩进，单位为像素 | number | - | 16 |
-| width | 选择器宽度 | number | - | - |
-| value | 选中结点值 | Array | - | - |
+| width | 下拉框的宽度 | number | - | - |
+| value | 选中节点值 | Array | - | - |
+| showClearBtn | 是否显示清空按钮 | Boolean | - | true |
+| showOkBtn | 是否显示确定按钮 | Boolean | - | true |
 
-自定义选择器可使用作用域插槽
+
+## 插槽
+| name | 说明 |
+|-----|-----|
+| - | 自定义选择器内容，作用域插槽，参数：value（选中的值数组），nodes（选中的节点数组） |
+| footer | 定义下拉框底部内容 |
 
 
 ### props

@@ -1,5 +1,8 @@
 <template>
-  <el-popover v-model="visible" placement="bottom" trigger="click" :width="popoverWidth"
+  <el-popover v-model="visible"
+              placement="bottom"
+              trigger="click"
+              :width="popoverWidth"
               popper-class="xdh-tree-select__popover">
     <div class="xdh-tree-select__bd">
       <el-scrollbar>
@@ -24,14 +27,17 @@
           :indent="indent"
           ref="tree"></el-tree>
       </el-scrollbar>
-      <div class="xdh-tree-select__btns">
-        <el-button type="text" size="mini" @click="clearChecked">清空</el-button>
-        <el-button size="mini" type="primary" @click="handleSelected">确定</el-button>
-      </div>
+      <select-footer
+        :clear="showClearBtn"
+        :submit="showOkBtn"
+        @on-clear="clearChecked"
+        @on-submit="handleSelected">
+        <slot name="footer"></slot>
+      </select-footer>
     </div>
-    <div class="xdh-tree-select__reference" slot="reference" :style="{width:width+'px'}" ref="reference">
+    <div class="xdh-tree-select__reference" slot="reference" ref="reference">
       <slot :value="value" :nodes="currentCheckedNodes">
-        <el-input :value="value.join(',')" readonly suffix-icon="el-icon-caret-bottom"></el-input>
+        <el-input :value="(value||[]).join(',')" readonly suffix-icon="el-icon-caret-bottom"></el-input>
       </slot>
     </div>
   </el-popover>
@@ -42,11 +48,15 @@
   import { Tree } from 'element-ui'
   import { addResizeListener, removeResizeListener } from 'element-ui/lib/utils/resize-event'
   import throttle from 'lodash.throttle'
+  import SelectFooter from './select-footer.vue'
 
   const treeProps = Object.assign({}, Tree.props)
 
   export default {
     name: 'XdhTreeSelect',
+    components: {
+      SelectFooter
+    },
     props: {
       ...treeProps,
 
@@ -60,6 +70,14 @@
       },
       value: {
         type: Array
+      },
+      showClearBtn: {
+        type: Boolean,
+        default: true
+      },
+      showOkBtn: {
+        type: Boolean,
+        default: true
       }
     },
     watch: {
@@ -79,8 +97,8 @@
     },
     methods: {
       setPopoverWidth () {
-        let width = this.width ? this.width : this.$refs.reference.getBoundingClientRect().width
-        this.popoverWidth = width - 25
+        let width = this.width ? this.width : this.$refs.reference.getBoundingClientRect().width - 25
+        this.popoverWidth = width
       },
       clearChecked () {
         this.$refs.tree.setCheckedNodes([])
