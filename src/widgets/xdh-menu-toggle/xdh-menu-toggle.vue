@@ -100,6 +100,9 @@
     watch: {
       collapse (val) {
         this.$emit('change', val)
+      },
+      defaultActive (val) {
+        this.currentIndex = val
       }
     },
     methods: {

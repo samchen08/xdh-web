@@ -18,7 +18,8 @@
             text: 'text',
             icon: 'icon',
             children: 'children',
-            group: 'group'
+            group: 'group',
+            route: 'route'
           }
         }
       },
@@ -82,7 +83,8 @@
       createItem (h, item) {
         return h('el-menu-item', {
           props: {
-            index: item[this.props.id].toString()
+            index: item[this.props.id].toString(),
+            route: item[this.props.route]
           }
         }, this.createTitle(h, item))
       },

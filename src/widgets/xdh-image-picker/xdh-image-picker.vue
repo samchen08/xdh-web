@@ -82,6 +82,11 @@
         visible: false
       }
     },
+    watch: {
+      value (val) {
+        this.selectedItem = val
+      }
+    },
     computed: {
       selectedClass () {
         return this.selectedItem === this.value ? 'is-selected' : ''
