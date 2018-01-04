@@ -45,7 +45,6 @@
   import XdhMenuToggle from '../widgets/xdh-menu-toggle'
   import XdhTreeTable from '../widgets/xdh-tree-table'
   import XdhTreeTableColumn from '../widgets/xdh-tree-table-column'
-  import XdhEcharts from '../widgets/xdh-echarts'
   import XdhTreeSelect from '../widgets/xdh-tree-select'
   import { listToTree } from '../utils/convert'
   //  import { log } from '../utils/consle'
@@ -141,7 +140,6 @@
       XdhMenuToggle,
       XdhTreeTable,
       XdhTreeTableColumn,
-      XdhEcharts,
       XdhTreeSelect,
       XdhGrid,
       Draggable,
