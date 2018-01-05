@@ -12,8 +12,8 @@
 
 <script>
   import XdhNavTabs from '../widgets/xdh-nav-tabs'
-  import VeHistogram from '../widgets/v-charts/packages/histogram'
-  import VeLine from '../widgets/v-charts/packages/line'
+  import VeHistogram from 'v-charts/lib/histogram'
+  import VeLine from 'v-charts/lib/line'
 
   export default {
     components: {
