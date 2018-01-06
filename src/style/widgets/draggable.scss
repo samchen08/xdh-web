@@ -1,0 +1,18 @@
+
+.user-select--none {
+  user-select: none;
+}
+
+.xdh-draggable {
+  &__handle {
+    cursor: move;
+  }
+  &__clone {
+    opacity: 0.6;
+    position: absolute;
+    z-index: $--index-top;
+  }
+  &__clone--translate {
+    transition: all 0.3s;
+  }
+}
