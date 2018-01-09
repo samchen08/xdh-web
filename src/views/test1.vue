@@ -14,6 +14,7 @@
   import XdhNavTabs from '../widgets/xdh-nav-tabs'
   import VeHistogram from 'v-charts/lib/histogram'
   import VeLine from 'v-charts/lib/line'
+  import Queue from '../utils/queue'
 
   export default {
     components: {
@@ -42,6 +43,32 @@
 //        yAxisType: 'value',
         axisVisible: true
       }
+      let queue = new Queue((data) => {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            console.log(data)
+            data > 2 ? reject(new Error('err')) : resolve('ok')
+          }, 1000)
+        })
+      }).start()
+
+      queue.$on('success', function (res) {
+        console.log(res)
+      })
+      queue.$on('complete', function () {
+        console.log('complete', this)
+      })
+      queue.$on('error', function (e, d) {
+        console.log('error', d, e)
+//        queue.push(d)
+//        queue.run()
+      })
+
+      queue.push(1)
+      queue.push(2)
+      queue.push(3)
+      queue.push(4)
+      queue.push(5)
     }
   }
 </script>

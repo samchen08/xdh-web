@@ -1,18 +1,24 @@
 <template>
-  <xdh-layout :fixed="false" :aside-width="asideWidth" class="app-layout">
+  <xdh-layout :fixed="true" :aside-width="asideWidth" class="app-layout">
     <h1 slot="header">Header</h1>
-    <div ref="main" style="padding: 10px">
-      <router-view></router-view>
+    <div ref="main">
+      <!--<div style="height: 2000px;"></div>-->
+      <div style="padding: 10px;">
+        <router-view></router-view>
+      </div>
+
     </div>
-    <div slot="aside" style="height: 100%">
+    <template slot="aside">
       <div class="collapse-btn" @click="toggle"><i :class="icon"></i></div>
       <xdh-menu-toggle
+        class="system-nav"
         :data="menus"
         :router="true"
         :default-active="$route.path"
         :collapse="collapsed"></xdh-menu-toggle>
-    </div>
 
+    </template>
+    <template slot="footer"></template>
   </xdh-layout>
 </template>
 
@@ -31,6 +37,10 @@
     &:hover {
       background: $--color-primary-light-9;
     }
+  }
+
+  .system-nav {
+    height: calc(100% - 30px);
   }
 </style>
 

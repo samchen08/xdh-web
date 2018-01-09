@@ -54,10 +54,10 @@ class Droppable extends Events {
       this.options.accept = o.accept.split(',')
     }
     addClass(this.el, DROPPABLE_CLASS)
-    this.event.$on('drag-enter', this.handleDragEnter.bind(this))
-    this.event.$on('drag-over', this.handleDragOver.bind(this))
-    this.event.$on('drag-leave', this.handleDragLeave.bind(this))
-    this.event.$on('drop', this.handleDrop.bind(this))
+    this.$on('drag-enter', this.handleDragEnter.bind(this))
+    this.$on('drag-over', this.handleDragOver.bind(this))
+    this.$on('drag-leave', this.handleDragLeave.bind(this))
+    this.$on('drop', this.handleDrop.bind(this))
   }
 
   handleDragEnter (e) {

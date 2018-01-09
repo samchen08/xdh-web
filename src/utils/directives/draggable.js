@@ -313,16 +313,16 @@ class Draggable extends Events {
           // 把已近进入的droppable设置为离开，确保当前进入的droppable只有一个
           hasEnterNodes.forEach(n => {
             n.entered = false
-            n.__droppable__.event.$emit('drag-leave', this)
+            n.__droppable__.$emit('drag-leave', this)
           })
           node.entered = true
-          drop.event.$emit('drag-enter', this)
+          drop.$emit('drag-enter', this)
         }
-        drop.event.$emit('drag-over', this)
+        drop.$emit('drag-over', this)
       } else {
         if (node.entered) {
           node.entered = false
-          drop.event.$emit('drag-leave', this)
+          drop.$emit('drag-leave', this)
         }
       }
       return isMatch
@@ -387,7 +387,7 @@ class Draggable extends Events {
     const metches = this.checkDroppable(pageX, pageY)
     metches.length ? this.handleAnimationEnd() : this.removeProxy()
     metches.forEach(node => {
-      node.entered && node.__droppable__.event.$emit('drop', this, metches)
+      node.entered && node.__droppable__.$emit('drop', this, metches)
     })
   }
 

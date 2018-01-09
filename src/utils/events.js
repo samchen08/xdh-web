@@ -7,7 +7,7 @@ import Vue from 'vue'
 class Events {
   constructor () {
     this.__handlers__ = []
-    this.event = new Vue({})
+    this.__event__ = new Vue({})
   }
 
   /**
@@ -23,6 +23,10 @@ class Events {
     on(el, eventName, proxy)
   }
 
+  $on () {
+    return this.event.$on.apply(this.__event__, arguments)
+  }
+
   /**
    * 销毁指定事件
    * @param el
@@ -30,12 +34,38 @@ class Events {
    * @param callback
    */
   off (el, eventName, callback) {
+    if (!el) return
+    const length = arguments.length
     this.__handlers__.forEach((item, index) => {
-      if (item.el === el && item.eventName === eventName && item.callback === callback) {
-        off(item.el, item.eventName, item.proxy)
-        this.__handlers__.splice(index, 1)
+      switch (length) {
+        case 3:
+          if (item.el === el && item.eventName === eventName && item.callback === callback) {
+            off(item.el, item.eventName, item.proxy)
+            this.__handlers__.splice(index, 1)
+          }
+          break
+        case 2:
+          if (item.el === el && item.eventName === eventName) {
+            off(item.el, item.eventName, item.proxy)
+            this.__handlers__.splice(index, 1)
+          }
+          break
+        case 1:
+          if (item.el === el) {
+            off(item.el, item.eventName, item.proxy)
+            this.__handlers__.splice(index, 1)
+          }
+          break
       }
     })
+  }
+
+  $off () {
+    return this.__event__.$off.apply(this.__event__, arguments)
+  }
+
+  $emit () {
+    return this.__event__.$emit.apply(this.__event__, arguments)
   }
 
   destroy () {
@@ -43,8 +73,8 @@ class Events {
       off(item.el, item.eventName, item.proxy)
     })
     this.__handlers__ = []
-    this.event.$off()
-    this.event.$destroy()
+    this.__event__.$off()
+    this.__event__.$destroy()
   }
 }
 
