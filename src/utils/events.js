@@ -24,7 +24,7 @@ class Events {
   }
 
   $on () {
-    return this.event.$on.apply(this.__event__, arguments)
+    return this.__event__.$on.apply(this.__event__, arguments)
   }
 
   /**

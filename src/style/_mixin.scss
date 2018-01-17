@@ -67,3 +67,8 @@
   /* W3C */
   background-image: linear-gradient($from, $to);
 }
+
+@mixin inline-block {
+  display: inline-block;
+  vertical-align: top;
+}

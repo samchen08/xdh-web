@@ -27,6 +27,7 @@
     "socket.io": "^2.0.4",
     "sortablejs": "^1.7.0",
     "v-charts": "^1.15.0",
+    "v-contextmenu": "^2.0.0",
     "vue": "^2.5.9",
     "vue-quill-editor": "^2.3.3",
     "vue-router": "^3.0.1",

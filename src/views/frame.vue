@@ -1,140 +1,31 @@
 <template>
-  <xdh-layout :fixed="true" :aside-width="asideWidth" class="app-layout">
-    <h1 slot="header">Header</h1>
-    <div ref="main">
-      <!--<div style="height: 2000px;"></div>-->
-      <div style="padding: 10px;">
-        <router-view></router-view>
-      </div>
-
+  <xdh-layout :fixed="false" :aside-width="asideWidth" class="app-layout">
+    <top-header slot="header"></top-header>
+    <div ref="main" class="app-main">
+      <router-view></router-view>
     </div>
-    <template slot="aside">
-      <div class="collapse-btn" @click="toggle"><i :class="icon"></i></div>
-      <xdh-menu-toggle
-        class="system-nav"
-        :data="menus"
-        :router="true"
-        :default-active="$route.path"
-        :collapse="collapsed"></xdh-menu-toggle>
-
-    </template>
-    <template slot="footer"></template>
+    <sidebar slot="aside" :width.sync="asideWidth"></sidebar>
+    <copyright slot="footer"></copyright>
   </xdh-layout>
 </template>
 
-<style type="text/scss" lang="scss" scoped>
-  @import "../style/vars";
-
-  .collapse-btn {
-    height: 20px;
-    line-height: 20px;
-    text-align: center;
-    font-size: 20px;
-    padding: 5px 0;
-    background: $--color-primary-light-8;
-    cursor: pointer;
-    color: $--color-primary-light-1;
-    &:hover {
-      background: $--color-primary-light-9;
-    }
-  }
-
-  .system-nav {
-    height: calc(100% - 30px);
-  }
-</style>
 
 <script>
   import XdhLayout from '../widgets/xdh-layout'
-  import XdhMenuToggle from '../widgets/xdh-menu-toggle'
+  import TopHeader from '../components/system/top-header.vue'
+  import Sidebar from '../components/system/sidebar.vue'
+  import Copyright from '../components/system/copyright.vue'
 
-  const menuData = [
-    {
-      id: '/home',
-      icon: 'el-icon-upload',
-      text: '云服务',
-      group: null
-    }, {
-      id: '/test1',
-      icon: 'iconfont icon-play',
-      text: '云服务',
-      group: null,
-      children: [{
-        id: '/test1',
-        icon: 'el-icon-upload',
-        text: '选项一',
-        group: '分组一'
-      }, {
-        id: 3,
-        icon: 'el-icon-upload',
-        text: '选项二',
-        group: '分组一'
-      }, {
-        id: 4,
-        icon: 'el-icon-upload',
-        text: '选项一',
-        group: '分组二'
-      }, {
-        id: 5,
-        icon: 'el-icon-upload',
-        text: '选项二',
-        group: '分组二'
-      }]
-    }, {
-      id: 11,
-      icon: 'el-icon-upload',
-      text: '云服务二',
-      group: null,
-      children: [{
-        id: 52,
-        icon: 'el-icon-upload',
-        text: '选项一',
-        group: '分组一'
-      }, {
-        id: 53,
-        icon: 'el-icon-upload',
-        text: '选项二',
-        group: '分组一'
-      }, {
-        id: 54,
-        icon: 'el-icon-upload',
-        text: '选项一',
-        group: '分组二'
-      }, {
-        id: 55,
-        icon: 'el-icon-upload',
-        text: '选项二',
-        group: '分组二'
-      }]
-    }, {
-      id: 121,
-      icon: 'el-icon-upload',
-      text: '云服务三',
-      group: null
-    }]
   export default {
     components: {
       XdhLayout,
-      XdhMenuToggle
+      TopHeader,
+      Sidebar,
+      Copyright
     },
     data () {
       return {
-        menus: menuData,
-        collapsed: false,
-        path: this.$route.path
-      }
-    },
-    computed: {
-      icon () {
-        return this.collapsed ? 'el-icon-d-arrow-right' : 'el-icon-d-arrow-left'
-      },
-      asideWidth () {
-        return this.collapsed ? '65px' : '250px'
-      }
-    },
-    methods: {
-      toggle () {
-        this.collapsed = !this.collapsed
+        asideWidth: '250px'
       }
     }
   }

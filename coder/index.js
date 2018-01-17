@@ -39,20 +39,18 @@ function toSchemaName (name) {
 function getSchemaFiles (root, parent) {
   let fileList = []
   let files = fs.readdirSync(root)
-  let regex = new RegExp('.js$', 'gi')
   _.each(files, function (file) {
-    if (!regex.test(file)) {
-      return
-    }
-    let filePath = path.join(root, file)
-    let stat = fs.lstatSync(filePath)
-    if (stat.isDirectory()) {
-      fileList = fileList.concat(getSchemaFiles(filePath, file))
-    } else {
-      fileList.push({
-        name: toSchemaName(parent ? [parent, file].join('_') : file),
-        path: filePath
-      })
+    if (file.indexOf('.js') > 0) {
+      let filePath = path.join(root, file)
+      let stat = fs.lstatSync(filePath)
+      if (stat.isDirectory()) {
+        fileList = fileList.concat(getSchemaFiles(filePath, file))
+      } else {
+        fileList.push({
+          name: toSchemaName(parent ? [parent, file].join('_') : file),
+          path: filePath
+        })
+      }
     }
   })
   return fileList

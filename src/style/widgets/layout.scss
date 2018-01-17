@@ -3,6 +3,12 @@
 
 .xdh-layout {
   min-height: 100%;
+  &--header {
+    padding: 0;
+  }
+  &--footer {
+    padding: 0;
+  }
 
   &--aside {
     overflow: visible;

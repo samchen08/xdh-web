@@ -1,0 +1,38 @@
+@import "../../vars";
+@import "../../mixin";
+
+.sidebar {
+  height: 100%;
+  background: $--color-primary-light-9;
+  border-right: 1px solid $--border-color-base;
+  &__toggle {
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    font-size: 20px;
+    padding: 5px 0;
+    background: $--color-primary-light-7;
+    cursor: pointer;
+    color: $--color-primary-light-4;
+
+    &:hover {
+      background: $--color-primary-light-6;
+    }
+  }
+  &__nav {
+    height: calc(100% - 30px);
+    user-select: none;
+    .el-menu {
+      background: $--color-primary-light-9;
+    }
+    .el-menu-item:hover, .el-submenu .el-submenu__title:hover {
+      background: $--color-primary-light-8;
+    }
+    .el-submenu.is-active .el-submenu__title, .el-submenu.is-active .el-submenu__title i {
+      color: $--color-primary;
+    }
+    .el-menu-item.is-active {
+      background: $--color-primary-light-8;
+    }
+  }
+}

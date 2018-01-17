@@ -1,0 +1,84 @@
+@import "../../vars";
+@import "../../mixin";
+
+$--header-height: 60px;
+$--color-primary-dark-1: mix($--color-black, $--color-primary, 10%);
+$--color-primary-dark-2: mix($--color-black, $--color-primary, 20%);
+.top-header {
+  height: $--header-height;
+  background: $--color-primary;
+  padding: 0 10px 0 0;
+  font-size: 0;
+  &__logo {
+    @include inline-block;
+    width: 64px;
+    text-align: center;
+    border-right: 1px solid hsla(180, 77%, 76%, .1);
+    height: 60px;
+    img {
+      width: 36px;
+      margin-top: 10px;
+    }
+  }
+  &__title {
+    @include inline-block;
+    line-height: $--header-height;
+    color: $--color-primary-light-9;
+    font-size: 24px;
+    text-shadow: 2px 2px 2px #666;
+    min-width: 250px - 64px;
+    span {
+      margin-left: 10px;
+    }
+  }
+  &__nav {
+    @include inline-block;
+    .xdh-menu, .el-submenu .el-menu, .el-menu-item, .el-submenu .el-menu-item {
+      background-color: $--color-primary;
+    }
+    .el-submenu .el-submenu__title, .el-submenu__title i, .el-menu-item, .el-submenu:focus > .el-submenu__title, .el-menu-item i {
+      color: $--color-primary-light-8;
+    }
+    .el-menu-item.is-active, .el-submenu.is-active .el-submenu__title {
+      color: $--color-primary-light-9;
+      border-bottom: 4px solid $--color-warning;
+      background-color: $--color-primary-dark-2;
+    }
+    .el-submenu.is-active .el-menu-item {
+      border-bottom: none;
+    }
+    .el-menu-item:hover, .el-submenu .el-submenu__title:hover {
+      background-color: $--color-primary-dark-1;
+      color: $--color-primary-light-9;
+    }
+    .el-menu-item-group__title {
+      color: $--color-primary-light-4;
+    }
+
+  }
+
+  &__tools {
+    color: $--color-primary-light-7;
+    text-align: right;
+    height: 60px;
+    user-select: none;
+    .tools-item {
+      @include inline-block;
+      padding: 0 10px;
+      [class^="el-icon-"], [class*=" el-icon-"], .iconfont {
+        font-size: 24px;
+        line-height: 60px;
+        cursor: pointer;
+      }
+      .el-dropdown {
+        color: $--color-primary-light-7;
+        line-height: 60px;
+        cursor: pointer;
+      }
+    }
+
+    .tools-item:hover {
+      color: $--color-primary-light-9;
+    }
+  }
+}

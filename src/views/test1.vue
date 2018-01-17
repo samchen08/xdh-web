@@ -3,6 +3,17 @@
     <xdh-nav-tabs label="测试" name="/test1" :closable="true"></xdh-nav-tabs>
     <ve-histogram :data="chartData" :settings="chartSettings"></ve-histogram>
     <ve-line :data="chartData" :settings="chartSettings"></ve-line>
+    <el-dialog
+      v-draggable="{el:'.el-dialog',handle:'.el-dialog__header'}"
+      title="提示"
+      :visible.sync="dialogVisible"
+      width="400px">
+      <span>这是一段信息</span>
+      <span slot="footer" class="dialog-footer">
+    <el-button @click="dialogVisible = false">取 消</el-button>
+    <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+  </span>
+    </el-dialog>
   </div>
 
 </template>
@@ -14,13 +25,21 @@
   import XdhNavTabs from '../widgets/xdh-nav-tabs'
   import VeHistogram from 'v-charts/lib/histogram'
   import VeLine from 'v-charts/lib/line'
-  import Queue from '../utils/queue'
+  import Draggable from '../utils/directives/draggable'
 
   export default {
     components: {
       XdhNavTabs,
       VeHistogram,
       VeLine
+    },
+    directives: {
+      Draggable
+    },
+    data () {
+      return {
+        dialogVisible: false
+      }
     },
     created () {
       this.chartData = {
@@ -40,35 +59,8 @@
         },
         axisSite: {left: ['成本', '利润']},
         xAxisType: 'category',
-//        yAxisType: 'value',
         axisVisible: true
       }
-      let queue = new Queue((data) => {
-        return new Promise((resolve, reject) => {
-          setTimeout(() => {
-            console.log(data)
-            data > 2 ? reject(new Error('err')) : resolve('ok')
-          }, 1000)
-        })
-      }).start()
-
-      queue.$on('success', function (res) {
-        console.log(res)
-      })
-      queue.$on('complete', function () {
-        console.log('complete', this)
-      })
-      queue.$on('error', function (e, d) {
-        console.log('error', d, e)
-//        queue.push(d)
-//        queue.run()
-      })
-
-      queue.push(1)
-      queue.push(2)
-      queue.push(3)
-      queue.push(4)
-      queue.push(5)
     }
   }
 </script>

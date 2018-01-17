@@ -4,20 +4,20 @@
 import ajax from '@/utils/ajax'
 
 /**
- * FETCH_TREE
+ * GET_MENUS
  * @type {string}
  */
-export const FETCH_TREE = '/api/tree/list'
+export const GET_MENUS = '/api/menus'
 
 /**
- * fetchTree
+ * getMenus
  * @param data
  * @returns {promise}
  */
-export const fetchTree = function (data) {
+export const getMenus = function (data) {
   return ajax({
-    method: 'get',
+    method: 'post',
     data: data,
-    url: FETCH_TREE
+    url: GET_MENUS
   })
 }

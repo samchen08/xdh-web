@@ -3,6 +3,9 @@
 @import "~element-ui/packages/theme-chalk/src/index";
 @import "widgets/index";
 @import "../assets/icons/iconfont.css";
+@import "components/system/top-header";
+@import "components/system/sidebar";
+@import "components/system/copyright";
 
 html, body {
   margin: 0;
@@ -10,22 +13,13 @@ html, body {
   font-family: $--font-family;
   font-size: $--font-size-base;
   height: 100%;
+  min-width: 1000px;
 }
 
+.app-init {
+  height: 100%;
+}
 
-.app-layout {
-  > .el-header {
-    background: $--color-primary;
-  }
-
-   .el-footer {
-    background: $--color-info-lighter
-  }
-  .el-aside {
-    background: $--color-white;
-    border-right: 1px solid $--border-color-base;
-  }
-  .nav-menu {
-    background: $--color-white;
-  }
+.app-main {
+  padding: 10px;
 }

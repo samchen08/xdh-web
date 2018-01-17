@@ -1,0 +1,12 @@
+@import "../../vars";
+@import "../../mixin";
+
+.copyright {
+  height: 40px;
+  line-height: 40px;
+  background: $--color-info-lighter;
+  padding: 0 20px;
+  text-align: right;
+  color: $--color-info;
+  font-size: 12px;
+}
