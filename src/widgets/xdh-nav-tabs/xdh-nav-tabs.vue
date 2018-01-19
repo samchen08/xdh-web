@@ -1,5 +1,5 @@
 <template>
-  <el-tabs v-if="tabs"
+  <el-tabs v-if="tabs && tabs.list.length>0"
            type="card"
            :active-name="tabs.selected"
            @tab-remove="handleTabRemove"
@@ -48,9 +48,9 @@
     methods: {
       handleTabRemove (name) {
         this.$store.commit(`${this.store}/remove`, {name: name})
-        setTimeout(() => {
+        this.$nextTick(() => {
           this.$router.push(this.tabs.selected)
-        }, 0)
+        })
       },
       handleTabClick (tab) {
         // 由于el-tabs组件有自己的逻辑要处理
@@ -63,13 +63,15 @@
       if (!this.$store.state[this.store]) {
         this.$store.registerModule(this.store, createStoreModule())
       }
-      this.$store.commit(`${this.store}/pushTab`, {
-        tab: {
-          label: this.label,
-          name: this.name,
-          closable: this.closable
-        }
-      })
+      if (this.label && this.name) {
+        this.$store.commit(`${this.store}/push`, {
+          tab: {
+            label: this.label,
+            name: this.name,
+            closable: this.closable
+          }
+        })
+      }
     }
   }
 </script>

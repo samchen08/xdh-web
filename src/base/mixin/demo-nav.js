@@ -1,15 +1,15 @@
-/*! build time: 2018-1-17 21:12:34 */
+/*! build time: 2018-1-19 14:57:39 */
 
 // getMenus
 import {
   getMenus
-} from '@/base/api/nav'
+} from '@/base/api/demo-nav'
 
 // mixin
 export default {
   data() {
     return {
-      nav: {
+      demoNav: {
         menus: null,
         list: [],
         page: null,
@@ -22,7 +22,7 @@ export default {
   methods: {
     getMenus(data) {
       return getMenus(data).then(res => {
-        this.nav.menus = res
+        this.demoNav.menus = res
         return res
       })
     }

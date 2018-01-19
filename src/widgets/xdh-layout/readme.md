@@ -5,10 +5,14 @@
 ## 用法
 
 ```
-<xdh-layout fixed>
-  <div slot="header">Header</div>
-  <div slot="aside">Aside</div>
-  <div slot="footer">Footer</div>
+<xdh-layout
+    :north="{resizable:true}"
+    :west="{resizable:true, width:westWidth}"
+    :east="false"
+    :footer-in-main="true">
+  <div slot="north">Header</div>
+  <div slot="west">Aside</div>
+  <div slot="south">Footer</div>
   <div>Main</div>
 </xdh-layout>
 
@@ -18,21 +22,52 @@
 
 | 参数 | 说明 | 类型 | 可选值 | 默认值 |
 |-----|-----|----|----|----|
-| header | 是否包含头部 | Boolean | - | true |
-| aside | 是否包含侧边栏 | Boolean | - | true |
-| footer | 是否包含底部 | Boolean | - | true |
-| header-height | 头部高度 | String | - | 60px |
-| footer-height | 底部高度 | String | - | 40px |
-| aside-width | 侧边栏宽度 | String | - | 250px |
+| north | 头部配置 | Boolean/Object | - | true |
+| south | 底部配置 | Boolean/Object | - | true |
+| west | 左侧栏配置 | Boolean/Object | - | true |
+| east | 右侧栏配置 | Boolean/Object | - | true |
+| footer-in-main | footer是否放到main里面 | Boolean | - | false |
 | fixed | 是否固定定位头部和底部 | Boolean | - | false |
+
+### north Object 默认值
+```
+{
+  height: '60px',
+  resizable: false
+}
+```
+
+### south Object 默认值
+```
+{
+  height: '40px',
+  resizable: false
+}
+```
+### west Object 默认值
+```
+{
+  width: '30%',
+  resizable: false
+}
+```
+
+### east Object 默认值
+```
+{
+  width: '30%',
+  resizable: false
+}
+```
 
 ## 插槽
 
 | name | 说明 |
 |-----|-----|
-| header | 定义头部内容 |
-| aside | 定义侧边栏内容 |
-| footer | 定义底部内容 |
+| north | 定义头部内容 |
+| west | 定义左侧边栏内容 |
+| east | 定义右侧边栏内容 |
+| south | 定义底部内容 |
 | - | 定义主体内容 |
 
 ## 方法

@@ -3,26 +3,29 @@
 
 .xdh-layout {
   min-height: 100%;
-  &--header {
+  &__north {
     padding: 0;
   }
-  &--footer {
+  &__south {
     padding: 0;
   }
 
-  &--aside {
+  &__west {
+    overflow: visible;
+  }
+  &__east {
     overflow: visible;
   }
 
-  &--main {
+  &__main {
     padding: 0;
   }
 
-  &--wrapper {
+  &__wrapper {
     height: 100%;
   }
 
-  &__fixed {
+  &--fixed {
     height: 100%;
 
   }

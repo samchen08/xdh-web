@@ -1,7 +1,7 @@
 module.exports = {
   vuex: false,
   model: [{
-    path: '/api/menus',
+    path: '/demo/api/menus',
     methods: false,
     template: 'mockMenus',
     name: 'getMenus',

@@ -1,6 +1,6 @@
 <template>
   <el-row class="top-header">
-    <el-col :span="18">
+    <el-col :span="10">
       <div class="top-header__logo">
         <img src="../../assets/logo.png">
       </div>
@@ -11,9 +11,10 @@
         <xdh-menu :data="nav" default-active="1" mode="horizontal"></xdh-menu>
       </div>
     </el-col>
-    <el-col :span="6">
+    <el-col :span="14">
       <div class="top-header__tools">
-        <div class="tools-item">
+        <search-input></search-input>
+        <div class="tool-item">
           <el-dropdown>
             <div>
               <xdh-avatar :src="head">User</xdh-avatar>
@@ -28,10 +29,10 @@
             </el-dropdown-menu>
           </el-dropdown>
         </div>
-        <div class="tools-item">
-          <i class="el-icon-setting"></i>
+        <div class="tool-item">
+           <i class="el-icon-setting"></i>
         </div>
-        <div class="tools-item">
+        <div class="tool-item">
           <i class="iconfont icon-play"></i>
         </div>
       </div>
@@ -43,12 +44,14 @@
 <script>
   import XdhMenu from '../../widgets/xdh-menu'
   import XdhAvatar from '../../widgets/xdh-avatar'
+  import SearchInput from './search-input.vue'
 
   const DEFAULT_HEAD = require('../../assets/images/head.jpg')
   export default {
     components: {
       XdhMenu,
-      XdhAvatar
+      XdhAvatar,
+      SearchInput
     },
     props: {
       showTitle: {
@@ -59,7 +62,12 @@
     data () {
       return {
         head: DEFAULT_HEAD,
-        nav: null
+        nav: [{
+          id: '/home',
+          icon: 'el-icon-upload',
+          text: '云服务',
+          group: null
+        }]
       }
     }
   }

@@ -40,8 +40,8 @@ const noop = function () {
 const defaultOptions = {
   disabled: false,
   handles: 'all', // 可resize的方向，可选值 e/s/w/n/all
-  minWidth: 50,
-  minHeight: 50,
+  minWidth: 20,
+  minHeight: 20,
   maxWidth: 10000,
   maxHeight: 10000,
   edge: 5, // 距离边缘多少时显示鼠标Cursor

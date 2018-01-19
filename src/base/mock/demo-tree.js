@@ -1,9 +1,9 @@
-/*! create time: 2018-1-17 21:12:34 */
+/*! create time: 2018-1-19 14:57:39 */
 
-// FETCH_TREE
+// FETCH_DEMO_TREE
 import {
-  FETCH_TREE
-} from '@/base/api/tree'
+  FETCH_DEMO_TREE
+} from '@/base/api/demo-tree'
 
 // createTree
 import {
@@ -12,8 +12,8 @@ import {
 
 // Mock
 export default [{
-  title: 'FETCH_TREE',
-  url: FETCH_TREE,
+  title: 'FETCH_DEMO_TREE',
+  url: FETCH_DEMO_TREE,
   params: {
     page: 1,
     limit: 10

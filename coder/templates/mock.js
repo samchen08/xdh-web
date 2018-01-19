@@ -3,7 +3,7 @@ module.exports = _.template(`
 /*! create time: <%=new Date().toLocaleString()%> */
 <% if(importApiArray.length>0){%>
 // <%=importApiArray.join(', ')%>
-import { <%=importApiArray.join(', ')%> } from '@/base/api/<%=name%>'
+import { <%=importApiArray.join(', ')%> } from '@/base/api/<%=kebabCaseName%>'
 <%}%>
 <%if(templateArray.length>0){%>
 // <%=templateArray.join(', ')%>

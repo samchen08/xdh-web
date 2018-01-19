@@ -1,7 +1,7 @@
 module.exports = {
-  vuex: false,
+  vuex: true,
   model: [{
-    path: '/api/tree',
+    path: '/demo/api/tree',
     methods: ['fetch'],
     template: 'createTree'
   }]

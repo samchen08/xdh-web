@@ -4,7 +4,7 @@ module.exports = _.template(`
 // <%=importTypeArray.join(', ')%>
 import { <%=importTypeArray.join(', ')%> } from '@/store/types'
 // <%=importApiArray.join(', ')%>
-import { <%=importApiArray.join(', ')%> } from '@/base/api/<%=name%>'
+import { <%=importApiArray.join(', ')%> } from '@/base/api/<%=kebabCaseName%>'
 // store module
 export default {
   state: {

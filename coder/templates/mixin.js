@@ -2,7 +2,7 @@ const _ = require('lodash')
 module.exports = _.template(`
 /*! build time: <%=new Date().toLocaleString()%> */
 // <%=importApiArray.join(', ')%>
-import { <%=importApiArray.join(', ')%> } from '@/base/api/<%=name%>'
+import { <%=importApiArray.join(', ')%> } from '@/base/api/<%=kebabCaseName%>'
 // mixin
 export default {
   data() {

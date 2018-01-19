@@ -1,0 +1,28 @@
+@import "../../vars";
+
+.nav-tabs {
+  width: 100%;
+  .el-tabs__item {
+    height: 30px;
+    line-height: 30px;
+    color: #666;
+  }
+  .el-tabs__item.is-active {
+    background-color: $--color-white;
+  }
+  .el-tabs__nav {
+    border-radius: 0 !important;
+  }
+  .el-tabs__header {
+    background: $--color-primary-light-9;
+    margin: 0;
+  }
+  .el-tabs__nav-next, .el-tabs__nav-prev {
+    line-height: 30px;
+  }
+  .el-tabs__nav-scroll {
+    position: relative;
+    left: -1px
+  }
+
+}

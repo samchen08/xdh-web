@@ -40,12 +40,12 @@ function getSchemaFiles (root, parent) {
   let fileList = []
   let files = fs.readdirSync(root)
   _.each(files, function (file) {
-    if (file.indexOf('.js') > 0) {
-      let filePath = path.join(root, file)
-      let stat = fs.lstatSync(filePath)
-      if (stat.isDirectory()) {
-        fileList = fileList.concat(getSchemaFiles(filePath, file))
-      } else {
+    let filePath = path.join(root, file)
+    let stat = fs.lstatSync(filePath)
+    if (stat.isDirectory()) {
+      fileList = fileList.concat(getSchemaFiles(filePath, file))
+    } else {
+      if (file.indexOf('.js') > 0) {
         fileList.push({
           name: toSchemaName(parent ? [parent, file].join('_') : file),
           path: filePath
@@ -79,7 +79,7 @@ function writeFile (path, fileName, content) {
   if (!fs.existsSync(path)) {
     fs.mkdirSync(path)
   }
-  fs.writeFileSync(path + fileName + '.js', content, {encoding: 'utf8'})
+  fs.writeFileSync(path + toKebabCase(fileName) + '.js', content, {encoding: 'utf8'})
 }
 
 function toUpperCase (name) {
@@ -100,6 +100,14 @@ function toCamelCase (name) {
  */
 function toSnakeCase (name) {
   return _.snakeCase(name)
+}
+
+/**
+ * fooBar => foo-bar
+ * @param name
+ */
+function toKebabCase (name) {
+  return _.kebabCase(name)
 }
 
 function toUpperSnakeCaseName (name) {
@@ -262,7 +270,8 @@ function writeMock (json) {
   let dbConfig = [], extendsArray = [],
     outPath = path.join(__dirname, config.outMockPath)
   _.each(json, function (model, name) {
-    dbConfig.push(`import ${name} from '@/base/mock/${name}'`)
+    const kebabCaseName = toKebabCase(name)
+    dbConfig.push(`import ${name} from '@/base/mock/${kebabCaseName}'`)
     extendsArray.push(`...${name}`)
     let mocks = [], importApiArray = [], templateArray = []
     _.each(model, function (item) {
@@ -291,6 +300,7 @@ function writeMock (json) {
     writeFile(outPath, name, beautifyJs(mockRender({
       importApiArray: importApiArray,
       name: name,
+      kebabCaseName: toKebabCase(name),
       mocks: mocks,
       code: config.mockCodeName || 'code',
       data: config.mockDataName || 'data',
@@ -346,6 +356,7 @@ function writeMixin (json, info) {
     const outPath = path.join(__dirname, config.outMixinPath)
     writeFile(outPath, name, beautifyJs(mixinRender({
       name: name,
+      kebabCaseName: toKebabCase(name),
       importTypeArray: importTypeArray,
       importApiArray: importApiArray,
       customStateArray: customStateArray,
@@ -369,7 +380,7 @@ function writeStore (json, info) {
     if (!info[name].vuex) {
       return
     }
-    modules.push(`import ${name} from '@/base/store/${name}'`)
+    modules.push(`import ${name} from '@/base/store/${ toKebabCase(name)}'`)
     extendsArray.push(name)
 
     let importTypeArray = [],
@@ -406,6 +417,7 @@ function writeStore (json, info) {
     const outPath = path.join(__dirname, config.outStorePath)
     writeFile(outPath, name, beautifyJs(storeRender({
       name: name,
+      kebabCaseName: toKebabCase(name),
       importTypeArray: importTypeArray,
       importApiArray: importApiArray,
       customStateArray: customStateArray,

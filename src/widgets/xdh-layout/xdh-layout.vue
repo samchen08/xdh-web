@@ -1,62 +1,123 @@
 <template>
-  <el-container :class="{'xdh-layout':true, 'xdh-layout__fixed':fixed}">
-    <el-header v-if="header" class="xdh-layout--header" :height="headerHeight">
-      <slot name="header"></slot>
+  <el-container :class="wrapperClasses">
+    <el-header v-if="northOptions"
+               class="xdh-layout__north"
+               :height="northOptions.height"
+               v-resizable="northOptions.resizable">
+      <slot name="north"></slot>
     </el-header>
-    <el-container class="xdh-layout--wrapper">
-      <el-aside v-if="aside" class="xdh-layout--aside" :width="asideWidth">
-        <slot name="aside"></slot>
+
+    <el-container class="xdh-layout__wrapper">
+      <el-aside
+        v-if="westOptions"
+        class="xdh-layout__west"
+        :width="westOptions.width"
+        v-resizable="westOptions.resizable">
+        <slot name="west"></slot>
       </el-aside>
-      <el-container>
-        <el-main class="xdh-layout--main">
+
+      <el-main v-if="!footerInMain" class="xdh-layout__main">
+        <slot></slot>
+      </el-main>
+
+      <el-container v-if="footerInMain">
+        <el-main class="xdh-layout__main">
           <slot></slot>
         </el-main>
-        <el-footer v-if="footer" class="xdh-layout--footer" :height="footerHeight">
-          <slot name="footer"></slot>
+        <el-footer v-if="southOptions"
+                   class="xdh-layout__south"
+                   :height="southOptions.height"
+                   v-resizable="southOptions.resizable">
+          <slot name="south"></slot>
         </el-footer>
       </el-container>
+
+      <el-aside
+        v-if="eastOptions"
+        class="xdh-layout__east"
+        :width="eastOptions.width"
+        v-resizable="eastOptions.resizable">
+        <slot name="east"></slot>
+      </el-aside>
+
     </el-container>
+
+    <el-footer v-if="!footerInMain && southOptions"
+               class="xdh-layout__south"
+               :height="southOptions.height"
+               v-resizable="southOptions.resizable">
+      <slot name="south"></slot>
+    </el-footer>
+
   </el-container>
 </template>
 
 <script>
+  import Resizable from '../../utils/directives/resizable'
+
   export default {
     name: 'XdhLayout',
+    directives: {
+      Resizable
+    },
     props: {
-      // 是否有头部
-      header: {
-        type: Boolean,
+      // header 配置
+      north: {
+        type: [Boolean, Object],
         default: true
       },
-      // 是否有侧边栏
-      aside: {
-        type: Boolean,
+      // footer 配置
+      south: {
+        type: [Boolean, Object],
         default: true
       },
-      // 是否有底部
-      footer: {
-        type: Boolean,
+      // 左aside配置
+      west: {
+        type: [Boolean, Object],
         default: true
       },
-      // 头部高度
-      headerHeight: {
-        type: String,
-        default: '60px'
+      // 右aside配置
+      east: {
+        type: [Boolean, Object],
+        default: true
       },
-      // 侧边栏宽度
-      asideWidth: {
-        type: String,
-        default: '250px'
-      },
-      // 底部高度
-      footerHeight: {
-        type: String,
-        default: '40px'
+      // footer是否放到main里面
+      footerInMain: {
+        type: Boolean,
+        default: false
       },
       // 是否固定头部和底部
       fixed: {
         type: Boolean,
         default: false
+      }
+    },
+    computed: {
+      northOptions () {
+        return this.north
+          ? {resizable: this.north.resizable ? {handles: 's'} : false, height: '60px', ...this.north}
+          : false
+      },
+      southOptions () {
+        return this.south
+          ? {resizable: this.south.resizable ? {handles: 'n'} : false, height: '40px', ...this.south}
+          : false
+      },
+      westOptions () {
+        return this.west
+          ? {resizable: this.west.resizable ? {handles: 'e'} : false, width: '30%', ...this.west}
+          : false
+      },
+      eastOptions () {
+        return this.east
+          ? {resizable: this.east.resizable ? {handles: 'w'} : false, width: '30%', ...this.east}
+          : false
+      },
+      wrapperClasses () {
+        return {
+          'xdh-layout': true,
+          'xdh-layout--fixed': this.fixed
+        }
       }
     }
   }

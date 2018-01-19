@@ -1,9 +1,9 @@
-/*! create time: 2018-1-17 21:12:34 */
+/*! create time: 2018-1-19 14:57:39 */
 
 // GET_MENUS
 import {
   GET_MENUS
-} from '@/base/api/nav'
+} from '@/base/api/demo-nav'
 
 // mockMenus
 import {

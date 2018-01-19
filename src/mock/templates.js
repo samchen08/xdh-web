@@ -26,67 +26,56 @@ export const createTree = function (Mock, url, query) {
 export const mockMenus = function (Mock, url, query) {
   const menuData = [
     {
-      id: '/home',
-      icon: 'el-icon-upload',
-      text: '云服务',
-      group: null
-    }, {
-      id: '/test1',
-      icon: 'iconfont icon-play',
-      text: '云服务',
-      group: null,
-      children: [{
-        id: '/test1',
-        icon: 'el-icon-upload',
-        text: '选项一',
-        group: '分组一'
-      }, {
-        id: 3,
-        icon: 'el-icon-upload',
-        text: '选项二',
-        group: '分组一'
-      }, {
-        id: 4,
-        icon: 'el-icon-upload',
-        text: '选项一',
-        group: '分组二'
-      }, {
-        id: 5,
-        icon: 'el-icon-upload',
-        text: '选项二',
-        group: '分组二'
-      }]
-    }, {
-      id: 11,
-      icon: 'el-icon-upload',
-      text: '云服务二',
-      group: null,
-      children: [{
-        id: 52,
-        icon: 'el-icon-upload',
-        text: '选项一',
-        group: '分组一'
-      }, {
-        id: 53,
-        icon: 'el-icon-upload',
-        text: '选项二',
-        group: '分组一'
-      }, {
-        id: 54,
-        icon: 'el-icon-upload',
-        text: '选项一',
-        group: '分组二'
-      }, {
-        id: 55,
-        icon: 'el-icon-upload',
-        text: '选项二',
-        group: '分组二'
-      }]
-    }, {
-      id: 121,
-      icon: 'el-icon-upload',
-      text: '云服务三',
-      group: null
-    }]
+      path: '/demo',
+      icon: 'iconfont icon-home',
+      text: '主页'
+    },
+    {
+      path: '/demo/start',
+      icon: 'el-icon-news',
+      text: '快速上手'
+    },
+    {
+      path: '/demo/rules',
+      icon: 'el-icon-share',
+      text: '开发规范',
+      children: []
+    },
+    {
+      path: '/demo/base',
+      icon: 'iconfont icon-widget',
+      text: '基础组件',
+      children: []
+    },
+    {
+      path: '/demo/business',
+      icon: 'iconfont icon-component',
+      text: '业务组件'
+    },
+    {
+      path: '/demo/utils',
+      icon: 'el-icon-star-on',
+      text: '实用工具'
+    },
+    {
+      path: '/demo/utils',
+      icon: 'el-icon-menu',
+      text: '官方资源',
+      children: [
+        {
+          path: 'https://cn.vuejs.org/',
+          icon: 'el-icon-star-off',
+          text: 'Vue.js',
+          type: 'iframe'
+        },
+        {
+          path: 'http://element.eleme.io/',
+          icon: 'el-icon-star-off',
+          text: 'ElementUI',
+          type: 'iframe'
+        }
+      ]
+    }
+  ]
   return {code: 0, data: menuData, message: ''}
 }

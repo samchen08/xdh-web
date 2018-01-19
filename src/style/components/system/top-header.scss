@@ -2,8 +2,8 @@
 @import "../../mixin";
 
 $--header-height: 60px;
-$--color-primary-dark-1: mix($--color-black, $--color-primary, 10%);
-$--color-primary-dark-2: mix($--color-black, $--color-primary, 20%);
+$--color-primary-dark-1: mix($--color-black, $--color-primary, 2%);
+$--color-primary-dark-2: mix($--color-black, $--color-primary, 5%);
 .top-header {
   height: $--header-height;
   background: $--color-primary;
@@ -14,7 +14,7 @@ $--color-primary-dark-2: mix($--color-black, $--color-primary, 20%);
     width: 64px;
     text-align: center;
     border-right: 1px solid hsla(180, 77%, 76%, .1);
-    height: 60px;
+    height: $--header-height;
     img {
       width: 36px;
       margin-top: 10px;
@@ -60,25 +60,66 @@ $--color-primary-dark-2: mix($--color-black, $--color-primary, 20%);
   &__tools {
     color: $--color-primary-light-7;
     text-align: right;
-    height: 60px;
+    height: $--header-height;
     user-select: none;
-    .tools-item {
+    font-size: 14px;
+    .tool-item {
       @include inline-block;
       padding: 0 10px;
       [class^="el-icon-"], [class*=" el-icon-"], .iconfont {
-        font-size: 24px;
-        line-height: 60px;
+        font-size: 20px;
+        line-height: $--header-height;
         cursor: pointer;
+        vertical-align: middle;
       }
       .el-dropdown {
         color: $--color-primary-light-7;
-        line-height: 60px;
+        line-height: $--header-height;
         cursor: pointer;
       }
     }
+    .tool-search {
+      @include inline-block;
+      width: 250px;
+      height: $--header-height;
+      padding: 0 10px;
+      .el-input {
+        margin-top: 15px;
+      }
+      .el-input__inner {
+        background: $--color-primary-light-4;
+        border: none
+      }
+      .el-input__inner:focus {
+        background: $--color-primary-light-5;
+      }
+      .el-input__icon {
+        color: $--color-primary-dark-2;
+      }
+      &__icon {
+        height: $--header-height;
+        line-height: $--header-height;
+        display: inline-block;
+        i {
+          font-size: 20px;
+          vertical-align: middle;
+        }
+      }
+    }
 
-    .tools-item:hover {
+    .tool-item:hover {
       color: $--color-primary-light-9;
+      background-color: $--color-primary-dark-1;
     }
   }
+}
+
+.slide-right-enter-active, .slide-right-leave-active {
+  transition: all 0.2s;
+  opacity: 1;
+}
+
+.slide-right-enter, .slide-right-leave-active {
+  opacity: 0;
+  width: 0;
 }

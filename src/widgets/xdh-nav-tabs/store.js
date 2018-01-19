@@ -9,7 +9,7 @@ export default function createStoreModule () {
       selected: ''
     },
     mutations: {
-      pushTab (state, payload) {
+      push (state, payload) {
         let tab = payload.tab
         tab._closable = tab.closable
         let hasTab = false
@@ -54,6 +54,10 @@ export default function createStoreModule () {
           tab.closable = false
           state.list.splice(0, 1, tab)
         }
+      },
+      clear (state) {
+        state.list = []
+        state.selected = ''
       }
     }
   }
