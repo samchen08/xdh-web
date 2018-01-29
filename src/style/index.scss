@@ -1,8 +1,4 @@
-@import "vars";
-@import "mixin";
-@import "~element-ui/packages/theme-chalk/src/index";
-@import "widgets/index";
-@import "../assets/icons/iconfont.css";
+@import "base";
 // 应用demo
 @import "demo";
 

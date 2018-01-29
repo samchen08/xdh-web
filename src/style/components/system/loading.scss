@@ -1,0 +1,13 @@
+@import "../../vars";
+
+.loading {
+  text-align: center;
+  line-height: 2em;
+  color: $--color-info;
+  &__icon {
+    font-size: 30px;
+    color: $--color-primary;
+  }
+  &__content {
+  }
+}

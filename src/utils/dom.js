@@ -23,16 +23,21 @@ export function offsetTop (el) {
  * @returns {*}
  */
 export function getScroll (target, top) {
-  const prop = top ? 'pageYOffset' : 'pageXOffset'
-  const method = top ? 'scrollTop' : 'scrollLeft'
+  if (target === window) {
+    const prop = top ? 'pageYOffset' : 'pageXOffset'
+    const method = top ? 'scrollTop' : 'scrollLeft'
 
-  let ret = target[prop]
+    let ret = target[prop]
 
-  if (typeof ret !== 'number') {
-    ret = window.document.documentElement[method]
+    if (typeof ret !== 'number') {
+      ret = window.document.documentElement[method]
+    }
+
+    return ret
+  } else {
+    const method = top ? 'scrollTop' : 'scrollLeft'
+    return target[method]
   }
-
-  return ret
 }
 
 /**

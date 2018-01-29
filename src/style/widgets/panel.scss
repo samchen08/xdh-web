@@ -1,0 +1,41 @@
+@import "../vars";
+
+.xdh-panel {
+  border: 1px solid $--color-primary-light-7;
+  border-radius: $--border-radius-small;
+  margin-bottom: 10px;
+  .xdh-title__content {
+    border-left: none;
+    padding-left: 0;
+  }
+  .xdh-layout__south {
+    padding: 0;
+  }
+  .xdh-title__wrapper {
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+  .xdh-layout__main {
+    padding: 10px;
+  }
+  &--success {
+    border-color: $--color-success;
+  }
+  &--warning {
+    border-color: $--color-warning;
+  }
+  &--danger {
+    border-color: $--color-danger;
+  }
+  &--info {
+    border-color: $--border-color-base;
+  }
+  &.has-shadow {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15)
+  }
+  &.is-simple {
+    .xdh-title__content {
+      padding-left: 10px;
+    }
+  }
+}

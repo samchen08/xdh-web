@@ -3,25 +3,16 @@
 @import "components/system/sidebar";
 @import "components/system/copyright";
 @import "components/system/nav-tabs";
-
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: $--font-family;
-  font-size: $--font-size-base;
-  height: 100%;
-  min-width: 1000px;
-}
-
-h1 {
-  font-size: 2em;
-}
+@import "components/system/loading";
+@import "components/system/list-panel";
+@import "components/system/filter-panel";
 
 .app-init {
   height: 100%;
 }
 
 .app-layout {
+  background: $--color-white;
   &__main {
     height: 100%;
   }
@@ -30,20 +21,22 @@ h1 {
   }
   .has-nav-tabs {
     .app-layout__content {
-      padding: 15px;
-      height: calc(100% - 61px);
+      padding: 10px;
+      height: calc(100% - 51px);
     }
   }
 }
 
 .xdh-layout--fixed {
+  overflow: hidden;
   .nav-tabs {
     position: fixed;
+    z-index: $--index-normal + 1;
   }
   .has-nav-tabs {
     .app-layout__content {
-      padding: 45px 15px 15px 15px;
-      height: calc(100% - 91px);
+      padding: 40px 10px 10px 10px;
+      height: calc(100% - 101px);
     }
   }
 }

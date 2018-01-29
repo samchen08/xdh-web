@@ -88,12 +88,7 @@
               }
               break
             case 'iframe':
-              this.$router.push({
-                path: '/demo/frame',
-                query: {
-                  url: item.path
-                }
-              })
+              this.$router.push(`/demo/frame/${encodeURIComponent(item.path)}`)
               break
             default:
               this.$router.push(item.path)

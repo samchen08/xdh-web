@@ -1,0 +1,26 @@
+@import "../vars";
+
+.xdh-box {
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: $--border-radius-base;
+  &--info {
+    background: $--border-color-extra-light
+
+  }
+  &--primary {
+    background: $--color-primary-light-9;
+  }
+  &--success {
+    background: $--color-success-lighter;
+  }
+  &--warning {
+    background: $--color-warning-lighter;
+  }
+  &--danger {
+    background: $--color-danger-lighter;
+  }
+  &--none {
+    background: transparent;
+  }
+}

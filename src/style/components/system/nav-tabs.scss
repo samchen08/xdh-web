@@ -5,7 +5,8 @@
   .el-tabs__item {
     height: 30px;
     line-height: 30px;
-    color: #666;
+    color: $--color-info;
+    font-size: 12px;
   }
   .el-tabs__item.is-active {
     background-color: $--color-white;

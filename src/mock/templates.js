@@ -45,7 +45,18 @@ export const mockMenus = function (Mock, url, query) {
       path: '/demo/base',
       icon: 'iconfont icon-widget',
       text: '基础组件',
-      children: []
+      children: [
+        {
+          path: 'interactive',
+          icon: 'el-icon-star-off',
+          text: '交互类'
+        },
+        {
+          path: 'makeup',
+          icon: 'el-icon-star-off',
+          text: '排版类'
+        }
+      ]
     },
     {
       path: '/demo/business',

@@ -4,8 +4,8 @@ import routes from './routes'
 import store from '../store/index'
 import createStoreModule from '../widgets/xdh-nav-tabs/store'
 
-const router = new Router(routes)
 const SYSTEM_STORE = 'systemTabs'
+const router = new Router(routes)
 
 // 注册导航tabs store模块
 if (!store.state[SYSTEM_STORE]) {
@@ -18,7 +18,7 @@ router.beforeEach((to, from, next) => {
   next()
 })
 
-router.afterEach((to, from) => {
+router.afterEach((to) => {
   if (to.meta.tab) {
     store.commit(`${SYSTEM_STORE}/push`, {
       tab: {

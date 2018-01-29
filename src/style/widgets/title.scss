@@ -1,0 +1,202 @@
+@import "../vars";
+@import "../mixin";
+
+$cls: xdh-title;
+.#{$cls} {
+  margin-bottom: 30px;
+  min-height: 36px;
+  &__wrapper {
+    @include clearfix;
+    border-radius: $--border-radius-base;
+    min-height: inherit;
+    margin-bottom: 10px;
+    position: relative;
+    height: 100%;
+  }
+  &__content {
+    float: left;
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 3px solid $--color-primary;
+    line-height: 14px;
+    font-size: 15px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $--color-info;
+    [class^="el-icon-"], [class*=" el-icon-"] {
+      font-size: 14px;
+    }
+    .iconfont {
+      font-size: 14px;
+    }
+  }
+  &__tool {
+    float: right;
+    line-height: 15px;
+    margin: 10px;
+    font-size: 12px;
+    color: $--color-info;
+    [class^="el-icon-"], [class*=" el-icon-"] {
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .iconfont {
+      font-size: 14px;
+      cursor: pointer;
+      display: inline-block;
+      margin: 0 2px;
+    }
+    .el-button--mini {
+      [class^="el-icon-"], [class*=" el-icon-"], .iconfont {
+        font-size: 12px;
+      }
+    }
+  }
+  &.is-border {
+    .#{$cls}__wrapper {
+      border-bottom: 1px solid $--border-color-light;
+      margin-bottom: 10px !important;
+      min-height: 40px;
+    }
+  }
+  &.is-simple {
+    .#{$cls}__wrapper {
+      margin-bottom: 0;
+    }
+  }
+  &.has-icon {
+    .#{$cls}__content {
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+
+  @at-root {
+    .#{$cls}--primary {
+      > .#{$cls}__wrapper {
+        background: $--color-primary-light-9;
+      }
+      .#{$cls}__content {
+        border-left-color: $--color-primary;
+      }
+      .#{$cls}__tool {
+        //color: $--color-primary;
+      }
+    }
+
+    .#{$cls}--success {
+      > .#{$cls}__wrapper {
+        background: $--color-success-lighter;
+      }
+      .#{$cls}__content {
+        border-left-color: $--color-success;
+      }
+      .#{$cls}__tool {
+        //color: $--color-success;
+      }
+    }
+
+    .#{$cls}--warning {
+      > .#{$cls}__wrapper {
+        background: $--color-warning-lighter;
+      }
+      .#{$cls}__content {
+        border-left-color: $--color-warning;
+      }
+      .#{$cls}__tool {
+        //color: $--color-warning;
+      }
+    }
+
+    .#{$cls}--danger {
+      > .#{$cls}__wrapper {
+        background: $--color-danger-lighter;
+      }
+      .#{$cls}__content {
+        border-left-color: $--color-danger;
+      }
+      .#{$cls}__tool {
+        //color: $--color-danger;
+      }
+    }
+
+    .#{$cls}--info {
+      > .#{$cls}__wrapper {
+        background: $--color-info-lighter;
+      }
+      .#{$cls}__content {
+        border-left-color: $--color-info;
+      }
+      .#{$cls}__tool {
+        //color: $--color-info;
+      }
+    }
+
+    .#{$cls}--primary.is-simple {
+      > .#{$cls}__wrapper {
+        background: none
+      }
+      .#{$cls}__content {
+        border-left-color: $--color-primary;
+        margin-left: 0;
+      }
+      .#{$cls}__tool {
+        //color: $--color-primary;
+      }
+    }
+
+    .#{$cls}--success.is-simple {
+      > .#{$cls}__wrapper {
+        background: none
+      }
+      .#{$cls}__content {
+        border-left-color: $--color-success;
+        margin-left: 0;
+      }
+      .#{$cls}__tool {
+        //color: $--color-success;
+      }
+    }
+
+    .#{$cls}--warning.is-simple {
+      > .#{$cls}__wrapper {
+        background: none;
+      }
+      .#{$cls}__content {
+        border-left-color: $--color-warning;
+        margin-left: 0;
+      }
+      .#{$cls}__tool {
+        //color: $--color-warning;
+      }
+    }
+
+    .#{$cls}--danger.is-simple {
+      > .#{$cls}__wrapper {
+        background: none;
+      }
+      .#{$cls}__content {
+        border-left-color: $--color-danger;
+        margin-left: 0;
+      }
+      .#{$cls}__tool {
+        //color: $--color-danger;
+      }
+    }
+
+    .#{$cls}--info.is-simple {
+      > .#{$cls}__wrapper {
+        background: none;
+      }
+      .#{$cls}__content {
+        border-left-color: $--color-info;
+        margin-left: 0;
+      }
+      .#{$cls}__tool {
+        //color: $--color-info;
+      }
+    }
+  }
+
+}

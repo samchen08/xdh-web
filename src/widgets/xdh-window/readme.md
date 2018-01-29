@@ -44,7 +44,7 @@
 | draggable | 窗体支持拖拽配置参数, 参数对象参考v-draggable | Boolean/Object | - | false |
 | resizable | 窗体支持改变尺寸配置参数, 参数对象参考v-resizable | Boolean/Object | - | false |
 | headerHeight | 头部高度 | String | - | 40px |
-| footerHeight | 底部高度 | String | - | 60px |
+| footerHeight | 底部高度 | String | - | 40px |
 | z-index | 窗体层级 | Number | - | 1000 |
 | shadow | 是否显示窗体阴影 | Boolean | - | true |
 | inline | 是否以内联方式显示 | Boolean | - | false |

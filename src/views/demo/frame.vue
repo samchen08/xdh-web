@@ -1,5 +1,5 @@
 <template>
-  <iframe :src="$route.query.url" frameborder="0"></iframe>
+  <iframe :src="$route.params.url" frameborder="0"></iframe>
 </template>
 
 <style type="text/scss" lang="scss" scoped>

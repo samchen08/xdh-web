@@ -1,0 +1,44 @@
+@import "vars";
+@import "mixin";
+@import "~element-ui/packages/theme-chalk/src/index";
+@import "widgets/index";
+@import "../assets/icons/iconfont.css";
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: $--font-family;
+  font-size: $--font-size-base;
+  height: 100%;
+  min-width: 1000px;
+  color: #333;
+  background: $--color-primary-light-9;
+}
+
+a {
+  text-decoration: none;
+  color: $--color-primary;
+
+  &:hover {
+    color: $--color-primary-light-2;
+    text-decoration: underline;
+  }
+}
+
+h1 {
+  font-size: 2em;
+}
+
+.pull-left {
+  float: left;
+  display: inline;
+}
+
+.pull-right {
+  float: right;
+  display: inline;
+}
+
+.clearfix {
+  @include clearfix
+}

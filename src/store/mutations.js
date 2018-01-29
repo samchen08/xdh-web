@@ -4,4 +4,5 @@
  *   state.moduleName.model = payload
  * }
  */
-export default {}
+export default {
+}

@@ -1,0 +1,17 @@
+@import "../../vars";
+
+.list-panel {
+  &__pager {
+    height: 35px;
+    padding: 5px 10px 0 10px;
+    z-index: 5;
+    background: $--color-primary-light-9;
+    .el-pagination.is-background .btn-prev, .el-pagination.is-background .btn-next, .el-pagination.is-background .el-pager li {
+      background: $--color-primary-light-7;
+      font-weight: normal;
+    }
+    .el-pagination.is-background .el-pager li.active {
+      background: $--color-primary;
+    }
+  }
+}

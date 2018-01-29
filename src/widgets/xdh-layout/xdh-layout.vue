@@ -1,15 +1,19 @@
 <template>
   <el-container :class="wrapperClasses">
-    <el-header v-if="northOptions"
+    <el-header v-if="northOptions && $slots.north"
                class="xdh-layout__north"
                :height="northOptions.height"
                v-resizable="northOptions.resizable">
       <slot name="north"></slot>
     </el-header>
 
-    <el-container class="xdh-layout__wrapper">
+    <el-main v-if="!west && !east" class="xdh-layout__main">
+      <slot></slot>
+    </el-main>
+
+    <el-container v-else class="xdh-layout__wrapper">
       <el-aside
-        v-if="westOptions"
+        v-if="westOptions && $slots.west"
         class="xdh-layout__west"
         :width="westOptions.width"
         v-resizable="westOptions.resizable">
@@ -24,7 +28,7 @@
         <el-main class="xdh-layout__main">
           <slot></slot>
         </el-main>
-        <el-footer v-if="southOptions"
+        <el-footer v-if="southOptions && $slots.south"
                    class="xdh-layout__south"
                    :height="southOptions.height"
                    v-resizable="southOptions.resizable">
@@ -33,7 +37,7 @@
       </el-container>
 
       <el-aside
-        v-if="eastOptions"
+        v-if="eastOptions && $slots.east"
         class="xdh-layout__east"
         :width="eastOptions.width"
         v-resizable="eastOptions.resizable">
@@ -42,7 +46,7 @@
 
     </el-container>
 
-    <el-footer v-if="!footerInMain && southOptions"
+    <el-footer v-if="!footerInMain && southOptions && $slots.south"
                class="xdh-layout__south"
                :height="southOptions.height"
                v-resizable="southOptions.resizable">

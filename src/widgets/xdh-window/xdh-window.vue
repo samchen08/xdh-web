@@ -147,7 +147,7 @@
       // 底部高度
       footerHeight: {
         type: String,
-        default: '60px'
+        default: '40px'
       },
       // 层级
       zIndex: {
@@ -236,7 +236,7 @@
         if (this.title === null || this.inline) {
           return false
         }
-        return Object.assign({
+        return this.draggable ? Object.assign({
           handle: '.xdh-window__header',
           onStartDrag: (e) => {
             this.$emit('on-start-drag', e)
@@ -247,12 +247,12 @@
           onDrag: (e) => {
             this.$emit('on-drag', e)
           }
-        }, this.draggable)
+        }, this.draggable) : false
       },
       resizableOptions () {
-        return Object.assign({
-          minWidth: 250,
-          minHeight: 200,
+        return this.resizable ? Object.assign({
+          minWidth: 100,
+          minHeight: 41,
           onStartResize: (e) => {
             this.$emit('on-start-resize', e)
           },
@@ -262,7 +262,7 @@
           onResize: (e) => {
             this.$emit('on-resize', e)
           }
-        }, this.resizable)
+        }, this.resizable) : false
       }
     },
     methods: {

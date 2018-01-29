@@ -12,7 +12,7 @@ export default [
         meta: {tab: true}
       },
       {
-        path: 'frame',
+        path: 'frame/:url',
         component: _import('demo/frame')
       },
       {
@@ -25,6 +25,12 @@ export default [
         path: 'rules',
         name: '开发规范',
         component: _import('demo/rules'),
+        meta: {tab: true}
+      },
+      {
+        path: 'business',
+        name: '业务组件',
+        component: _import('demo/business'),
         meta: {tab: true}
       }
     ]
