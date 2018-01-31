@@ -9,7 +9,7 @@ module.exports = {
     path: '/api/users', // 接口地址路径，必须
     prefix: '', // 接口地址前缀，可选，默认为空, 名称必须要在 src/config.js中定义，否则报错
     methods: ['fetch', 'get', 'add', 'update', 'remove'], // 生成请求方法，默认全部，如需要自定义，设置为false
-    transform: 'userMap' // 响应数据转换函数，可选，函数名称必须要在 src/api/transformer.js 中定义，否则会报错
+    transform: 'userMap' // 响应数据转换函数，可选，函数名称必须要在 src/api/index.js 中定义，否则会报错
     options: {}, // ajax 参数选项，可选
     name:'', // 自定义方法名称，methods为false，必须要设置
     columns: {}, // 模拟数据字段mock模板，可选

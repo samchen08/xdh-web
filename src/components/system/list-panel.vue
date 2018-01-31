@@ -130,7 +130,7 @@
     },
     methods: {
       loadData () {
-        if (!this.load) return
+        if (!this.load || this.loading) return
         this.loading = true
         this.load(this.currentPage, this.pageSize)
           .then(() => {

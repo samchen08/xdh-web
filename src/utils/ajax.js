@@ -65,13 +65,16 @@ export default function (options) {
 }
 
 /**
- *  axios 数据适配函数
+ * axios 数据适配函数
  * @param transformer 转换函数
+ * @param method 方法名称
+ * @param postData 请求的参数对象
+ * @param params 请求的url参数对象
  * @returns {Function}
  */
-export function transformHandler (transformer) {
+export function transformHandler (transformer, method, postData, params) {
   return function (data) {
     let json = JSON.parse(data)
-    return transformer(json)
+    return transformer(json, method, postData, params)
   }
 }

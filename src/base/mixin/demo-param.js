@@ -1,12 +1,13 @@
-/*! build time: 2018-1-25 17:33:57 */
+/*! build time: 2018-1-31 15:22:32 */
 
-// fetchDemoParam, getDemoParam, addDemoParam, updateDemoParam, removeDemoParam
+// fetchDemoParam, getDemoParam, addDemoParam, updateDemoParam, removeDemoParam, removeParams
 import {
   fetchDemoParam,
   getDemoParam,
   addDemoParam,
   updateDemoParam,
-  removeDemoParam
+  removeDemoParam,
+  removeParams
 } from '@/base/api/demo-param'
 
 // mixin
@@ -14,6 +15,7 @@ export default {
   data() {
     return {
       demoParam: {
+        message: null,
         list: [],
         page: null,
         limit: null,
@@ -63,6 +65,12 @@ export default {
         if (index !== undefined) {
           this.demoParam.list.splice(index, 1)
         }
+        return res
+      })
+    },
+    removeParams(data) {
+      return removeParams(data).then(res => {
+        this.demoParam.message = res
         return res
       })
     }

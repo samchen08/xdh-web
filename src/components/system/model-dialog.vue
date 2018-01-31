@@ -146,6 +146,9 @@
       },
       handleDialogOpen () {
         this.$emit('open')
+        this.$nextTick(() => {
+          this.$refs.form.clearValidate()
+        })
       },
       handleDialogClose () {
         this.$emit('close')

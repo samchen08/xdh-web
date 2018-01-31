@@ -11,7 +11,9 @@ import { <%=configKeys.join(', ')%>} from '@/config'
 import ajax, { transformHandler } from '@/utils/ajax'
 
 // transformer
-import { <%=transforms.join(', ')%> } from '@/api/transformer'
+import transformer from '@/api/index'
+const { <%=transforms.join(', ')%> } = transformer
+
 <%}else{%>
 // ajax
 import ajax from '@/utils/ajax'
@@ -53,7 +55,10 @@ export const <%=item.camelCaseName%> = function (
       <%}%>
       
       <%if(item.transform && item.transform.length>0){%>
-          transformResponse: [transformHandler(<%=item.transform%>)],
+          transformResponse: [transformHandler(<%=item.transform%>, '<%=item.camelCaseName%>', <%=item.ajaxParam%>
+          <%if(item.params.length>0){%>
+            ,{<%=item.params.join(', ')%>}
+          <%}%>)],
       <%}%>
       
       <%=item.ajaxParam%>:<%=item.ajaxParam%>,

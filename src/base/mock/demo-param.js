@@ -1,12 +1,13 @@
-/*! create time: 2018-1-25 17:33:57 */
+/*! create time: 2018-1-31 15:22:32 */
 
-// FETCH_DEMO_PARAM, GET_DEMO_PARAM, ADD_DEMO_PARAM, UPDATE_DEMO_PARAM, REMOVE_DEMO_PARAM
+// FETCH_DEMO_PARAM, GET_DEMO_PARAM, ADD_DEMO_PARAM, UPDATE_DEMO_PARAM, REMOVE_DEMO_PARAM, REMOVE_PARAMS
 import {
   FETCH_DEMO_PARAM,
   GET_DEMO_PARAM,
   ADD_DEMO_PARAM,
   UPDATE_DEMO_PARAM,
-  REMOVE_DEMO_PARAM
+  REMOVE_DEMO_PARAM,
+  REMOVE_PARAMS
 } from '@/base/api/demo-param'
 
 // Mock
@@ -73,5 +74,16 @@ export default [{
     code: 0,
     message: '删除成功',
     data: true
+  }
+}, {
+  title: 'REMOVE_PARAMS',
+  url: REMOVE_PARAMS,
+  params: {},
+  template: {
+    code: 0,
+    message: '',
+    data: {
+      'msg': '删除成功'
+    }
   }
 }]

@@ -1,4 +1,4 @@
-/*! create time: 2018-1-25 17:33:57 */
+/*! create time: 2018-1-31 15:22:32 */
 
 // ajax
 import ajax from '@/utils/ajax'
@@ -103,5 +103,24 @@ export const removeDemoParam = function (id, data) {
     },
     data: data,
     url: REMOVE_DEMO_PARAM
+  })
+}
+
+/**
+ * REMOVE_PARAMS
+ * @type {string}
+ */
+export const REMOVE_PARAMS = '/demo/api/param/remove'
+
+/**
+ * removeParams
+ * @param data
+ * @returns {promise}
+ */
+export const removeParams = function (data) {
+  return ajax({
+    method: 'post',
+    data: data,
+    url: REMOVE_PARAMS
   })
 }
