@@ -1,7 +1,15 @@
-/*! create time: 2018-1-31 15:22:32 */
+/*! create time: 2018-1-31 22:08:06 */
 
 // ajax
-import ajax from '@/utils/ajax'
+import ajax, {
+  transformHandler
+} from '@/utils/ajax'
+
+// transformer
+import transformer from '@/mapping/index'
+const {
+  userMap
+} = transformer
 
 /**
  * FETCH_DEMO_PARAM
@@ -17,6 +25,7 @@ export const FETCH_DEMO_PARAM = '/demo/api/param/list'
 export const fetchDemoParam = function (data) {
   return ajax({
     method: 'get',
+    transformResponse: [transformHandler(userMap, 'fetchDemoParam', data)],
     data: data,
     url: FETCH_DEMO_PARAM
   })
@@ -40,6 +49,9 @@ export const getDemoParam = function (id, data) {
     params: {
       id
     },
+    transformResponse: [transformHandler(userMap, 'getDemoParam', data, {
+      id
+    })],
     data: data,
     url: GET_DEMO_PARAM
   })
@@ -59,6 +71,7 @@ export const ADD_DEMO_PARAM = '/demo/api/param/save'
 export const addDemoParam = function (data) {
   return ajax({
     method: 'post',
+    transformResponse: [transformHandler(userMap, 'addDemoParam', data)],
     data: data,
     url: ADD_DEMO_PARAM
   })
@@ -78,6 +91,7 @@ export const UPDATE_DEMO_PARAM = '/demo/api/param/update'
 export const updateDemoParam = function (data) {
   return ajax({
     method: 'post',
+    transformResponse: [transformHandler(userMap, 'updateDemoParam', data)],
     data: data,
     url: UPDATE_DEMO_PARAM
   })
@@ -101,6 +115,9 @@ export const removeDemoParam = function (id, data) {
     params: {
       id
     },
+    transformResponse: [transformHandler(userMap, 'removeDemoParam', data, {
+      id
+    })],
     data: data,
     url: REMOVE_DEMO_PARAM
   })

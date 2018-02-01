@@ -121,6 +121,7 @@
       name: {
         type: String
       },
+      // mixin对象，如果设置了mixin，启用mixin模式，否则启用store模式
       mixin: {
         type: Object
       },

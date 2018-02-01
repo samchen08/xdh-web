@@ -8,13 +8,13 @@ module.exports = {
         name: '@ctitle',
         value: '@title(1)',
         remark: '@ctitle'
-      }
+      },
+      transform: 'userMap'
     },
     {
       path: '/demo/api/param/remove',
       methods: false,
       name: 'removeParams',
-      state: 'message',
       columns: {
         msg: '删除成功'
       }

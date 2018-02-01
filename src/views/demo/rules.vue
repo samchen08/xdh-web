@@ -14,7 +14,6 @@
     </template>
 
     <template slot="table-columns" slot-scope="scope">
-      <el-table-column type="selection"></el-table-column>
       <el-table-column label="序号" prop="order" width="80" sortable></el-table-column>
       <el-table-column label="平台名称" prop="name" width="200"></el-table-column>
       <el-table-column label="平台代码" prop="code" width="150"></el-table-column>

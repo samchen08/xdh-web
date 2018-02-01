@@ -11,7 +11,7 @@ import { <%=configKeys.join(', ')%>} from '@/config'
 import ajax, { transformHandler } from '@/utils/ajax'
 
 // transformer
-import transformer from '@/api/index'
+import transformer from '@/mapping/index'
 const { <%=transforms.join(', ')%> } = transformer
 
 <%}else{%>

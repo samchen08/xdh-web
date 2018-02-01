@@ -1,4 +1,4 @@
-/*! build time: 2018-1-31 15:22:32 */
+/*! build time: 2018-1-31 22:08:06 */
 
 // fetchDemoParam, getDemoParam, addDemoParam, updateDemoParam, removeDemoParam, removeParams
 import {
@@ -15,7 +15,6 @@ export default {
   data() {
     return {
       demoParam: {
-        message: null,
         list: [],
         page: null,
         limit: null,
@@ -70,7 +69,6 @@ export default {
     },
     removeParams(data) {
       return removeParams(data).then(res => {
-        this.demoParam.message = res
         return res
       })
     }

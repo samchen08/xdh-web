@@ -21,6 +21,7 @@
       <el-table-column type="index"></el-table-column>
       <el-table-column prop="name" label="参数名称"></el-table-column>
       <el-table-column prop="value" label="参数值"></el-table-column>
+      <el-table-column prop="remark" label="备注"></el-table-column>
     </template>
 
     <template slot="table-tool">

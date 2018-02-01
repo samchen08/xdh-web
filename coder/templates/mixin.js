@@ -159,7 +159,9 @@ export default {
               <%})%>
               <%=item.ajaxParam%>
             ).then(res => {
-               this.<%=name%>.<%=item.state%> = res
+               <%if(item.state){%>
+                  this.<%=name%>.<%=item.state%> = res
+               <%}%>
                return res
             })
         }

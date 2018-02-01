@@ -152,7 +152,7 @@ function stringify (json) {
 function parseSchemas (schemas) {
   let result = {}
   _.each(schemas, function (schema, name) {
-    result[name] = parseModel(schema.model, name)
+    result[name] = parseModel(schema.model, name, schema.vuex)
   })
   return result
 }
@@ -161,9 +161,10 @@ function parseSchemas (schemas) {
  * 解析单个model
  * @param model
  * @param name
+ * @param name
  * @returns {Array}
  */
-function parseModel (model, name) {
+function parseModel (model, name, vuex) {
   let result = []
   if (_.isArray(model)) {
     _.each(model, function (item) {
@@ -174,8 +175,11 @@ function parseModel (model, name) {
   } else {
     if (model.disabled !== true && model.path) {
       if (model.methods === false) {
-        if ((!model.state && !model.method) || !model.name) {
-          throw Error('methods为false时，必须要设置state 和 name')
+        if (!model.name) {
+          throw Error('methods为false时，必须要设置name')
+        }
+        if (vuex && (!model.state && !model.method)) {
+          throw Error('vuex模式，methods为false，并且method为空时，必须要设置state')
         }
         let options = _.extend({}, {method: 'post'}, model.options || {})
         result.push({
